@@ -123,7 +123,7 @@ void populate_first_and_follow(FirstAndFollowEntry entries[], int grammar_count,
         }
     }
 
-    printf("FIRST DONE\n");
+    // printf("FIRST DONE\n");
 
     // Follow computation
     set_insert(&entries[VAR_PROGRAM].follow, TK_EOF);
@@ -249,6 +249,7 @@ ParseTreeNode* create_new_tree_node(Token* token, Term term) {
     ParseTreeNode* new_node = (ParseTreeNode*) malloc(sizeof(ParseTreeNode));
     new_node->token = token;
     new_node->term = term;
+    new_node->child_count = 0;
     return new_node;
 }
 
@@ -311,6 +312,33 @@ void print_parse_tree_inorder(ParseTreeNode* node, int depth) {
         // Recursively print children
         for(int i = 0; i < node->child_count; i++) {
             print_parse_tree_inorder(node->children[i], depth + 1);
+        }
+    }
+}
+
+void print_parse_tree_to_file(ParseTreeNode* node, int depth, FILE* file) {
+    if(node == NULL) {
+        return;
+    }
+    
+    // Print indentation
+    for(int i = 0; i < depth; i++) {
+        fprintf(file, "  ");
+    }
+    
+    // Print current node
+    if(node->term.is_terminal) {
+        fprintf(file, "Terminal: %s", get_token_name(node->term.terminal_type));
+        if(node->token != NULL) {
+            fprintf(file, " (lexeme: \"%s\", line: %d)", node->token->token, node->token->line_number);
+        }
+        fprintf(file, "\n");
+    } else {
+        fprintf(file, "Non-Terminal: %s\n", get_variable_name(node->term.var));
+        
+        // Recursively print children
+        for(int i = 0; i < node->child_count; i++) {
+            print_parse_tree_to_file(node->children[i], depth + 1, file);
         }
     }
 }
