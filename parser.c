@@ -401,88 +401,88 @@ void test_first_computation()
     printf("\n=== TEST COMPLETE ===\n");
 }
 
-int main()
-{
-    test_first_computation();
+// int main()
+// {
+//     test_first_computation();
 
-    printf("\n=== TESTING PARSE TABLE GENERATION ===\n\n");
+//     printf("\n=== TESTING PARSE TABLE GENERATION ===\n\n");
 
-    // Initialize first and follow table
-    FirstAndFollowEntry entries[VAR_COUNT];
+//     // Initialize first and follow table
+//     FirstAndFollowEntry entries[VAR_COUNT];
 
-    // Populate the first and follow sets
-    populate_first_and_follow(entries, GRAMMAR_SIZE, grammar);
+//     // Populate the first and follow sets
+//     populate_first_and_follow(entries, GRAMMAR_SIZE, grammar);
 
-    // Compute parse table
-    ParseTable pt;
-    compute_parse_table(pt, VAR_COUNT, entries, GRAMMAR_SIZE, grammar);
+//     // Compute parse table
+//     ParseTable pt;
+//     compute_parse_table(pt, VAR_COUNT, entries, GRAMMAR_SIZE, grammar);
 
-    // printf("PARSE TABLE:\n");
-    // printf("%-30s |", "Non-Terminal \\ Terminal");
+//     // printf("PARSE TABLE:\n");
+//     // printf("%-30s |", "Non-Terminal \\ Terminal");
 
-    // // Print header with terminal names
-    // for (int j = 0; j < TK_COUNT; j++)
-    // {
-    //     if (j == TK_EPSILON)
-    //         continue; // Skip epsilon in table header
-    //     printf(" %-12s", get_token_name(j));
-    // }
-    // printf("\n");
+//     // // Print header with terminal names
+//     // for (int j = 0; j < TK_COUNT; j++)
+//     // {
+//     //     if (j == TK_EPSILON)
+//     //         continue; // Skip epsilon in table header
+//     //     printf(" %-12s", get_token_name(j));
+//     // }
+//     // printf("\n");
 
-    // // Print separator line
-    // for (int i = 0; i < 31; i++)
-    //     printf("-");
-    // printf("+");
-    // for (int j = 0; j < TK_COUNT; j++)
-    // {
-    //     if (j == TK_EPSILON)
-    //         continue;
-    //     printf("---------");
-    // }
-    // printf("\n");
+//     // // Print separator line
+//     // for (int i = 0; i < 31; i++)
+//     //     printf("-");
+//     // printf("+");
+//     // for (int j = 0; j < TK_COUNT; j++)
+//     // {
+//     //     if (j == TK_EPSILON)
+//     //         continue;
+//     //     printf("---------");
+//     // }
+//     // printf("\n");
 
-    // // Print table rows
-    // for (int i = 0; i < VAR_COUNT; i++)
-    // {
-    //     printf("%-30s |", get_variable_name(i));
-    //     for (int j = 0; j < TK_COUNT; j++)
-    //     {
-    //         if (j == TK_EPSILON)
-    //             continue;
-    //         if (pt[i][j] == -1)
-    //         {
-    //             printf(" %-12s", "-");
-    //         }
-    //         else
-    //         {
-    //             printf(" %-12d", pt[i][j]);
-    //         }
-    //     }
-    //     printf("\n");
-    // }
+//     // // Print table rows
+//     // for (int i = 0; i < VAR_COUNT; i++)
+//     // {
+//     //     printf("%-30s |", get_variable_name(i));
+//     //     for (int j = 0; j < TK_COUNT; j++)
+//     //     {
+//     //         if (j == TK_EPSILON)
+//     //             continue;
+//     //         if (pt[i][j] == -1)
+//     //         {
+//     //             printf(" %-12s", "-");
+//     //         }
+//     //         else
+//     //         {
+//     //             printf(" %-12d", pt[i][j]);
+//     //         }
+//     //     }
+//     //     printf("\n");
+//     // }
 
-    // printf("\n=== PARSE TABLE TEST COMPLETE ===\n");
+//     // printf("\n=== PARSE TABLE TEST COMPLETE ===\n");
     
-    printf("\n=== TESTING PARSE TREE GENERATION ===\n\n");
+//     printf("\n=== TESTING PARSE TREE GENERATION ===\n\n");
     
-    // Simple test: Create a minimal token stream to test parse tree
-    // For a complete test, you would need to read from a file
-    // Here's a skeleton showing how to use the parse tree functions:
-    int token_count;
-    Token** test_tokens = get_tokens("sample.moo", &token_count) ; // Array of token pointers
-    int token_index = 0;
+//     // Simple test: Create a minimal token stream to test parse tree
+//     // For a complete test, you would need to read from a file
+//     // Here's a skeleton showing how to use the parse tree functions:
+//     int token_count;
+//     Token** test_tokens = get_tokens("sample.moo", &token_count) ; // Array of token pointers
+//     int token_index = 0;
     
-    ParseTreeNode* root = generate_parse_tree(
-        token_count, 
-        test_tokens, 
-        &token_index, 
-        pt, 
-        grammar, 
-        (Term){.is_terminal = false, .var = VAR_PROGRAM}
-    );
+//     ParseTreeNode* root = generate_parse_tree(
+//         token_count, 
+//         test_tokens, 
+//         &token_index, 
+//         pt, 
+//         grammar, 
+//         (Term){.is_terminal = false, .var = VAR_PROGRAM}
+//     );
     
-    printf("Parse Tree (Inorder Traversal):\n");
-    print_parse_tree_inorder(root, 0);
+//     printf("Parse Tree (Inorder Traversal):\n");
+//     print_parse_tree_inorder(root, 0);
     
-    printf("\n=== PARSE TREE TEST COMPLETE ===\n");
-}
+//     printf("\n=== PARSE TREE TEST COMPLETE ===\n");
+// }
