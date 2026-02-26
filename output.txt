@@ -1,0 +1,227 @@
+Non-Terminal: PROGRAM
+  Non-Terminal: OTHER_FUNCTIONS
+    Non-Terminal: FUNCTION
+      Terminal: TK_FUNID (lexeme: "_function1", line: 1)
+      Non-Terminal: INPUT_PAR
+        Terminal: TK_INPUT (lexeme: "input", line: 3)
+        Terminal: TK_PARAMETER (lexeme: "parameter", line: 3)
+        Terminal: TK_LIST (lexeme: "list", line: 3)
+        Terminal: TK_SQL (lexeme: "[", line: 3)
+        Non-Terminal: PARAMETER_LIST
+          Non-Terminal: DATA_TYPE
+            Non-Terminal: PRIMITIVE_DATATYPE
+              Terminal: TK_INT (lexeme: "int", line: 3)
+          Terminal: TK_ID (lexeme: "c2", line: 3)
+          Non-Terminal: REMAINING_LIST
+            Terminal: TK_COMMA (lexeme: ",", line: 3)
+            Non-Terminal: PARAMETER_LIST
+              Non-Terminal: DATA_TYPE
+                Non-Terminal: PRIMITIVE_DATATYPE
+                  Terminal: TK_INT (lexeme: "int", line: 3)
+              Terminal: TK_ID (lexeme: "d2cd", line: 3)
+              Non-Terminal: REMAINING_LIST
+        Terminal: TK_SQR (lexeme: "]", line: 3)
+      Non-Terminal: OUTPUT_PAR
+        Terminal: TK_OUTPUT (lexeme: "output", line: 4)
+        Terminal: TK_PARAMETER (lexeme: "parameter", line: 4)
+        Terminal: TK_LIST (lexeme: "list", line: 4)
+        Terminal: TK_SQL (lexeme: "[", line: 4)
+        Non-Terminal: PARAMETER_LIST
+          Non-Terminal: DATA_TYPE
+            Non-Terminal: PRIMITIVE_DATATYPE
+              Terminal: TK_INT (lexeme: "int", line: 4)
+          Terminal: TK_ID (lexeme: "b5d", line: 4)
+          Non-Terminal: REMAINING_LIST
+            Terminal: TK_COMMA (lexeme: ",", line: 4)
+            Non-Terminal: PARAMETER_LIST
+              Non-Terminal: DATA_TYPE
+                Non-Terminal: PRIMITIVE_DATATYPE
+                  Terminal: TK_INT (lexeme: "int", line: 4)
+              Terminal: TK_ID (lexeme: "d3", line: 4)
+              Non-Terminal: REMAINING_LIST
+        Terminal: TK_SQR (lexeme: "]", line: 4)
+      Terminal: TK_SEM (lexeme: ";", line: 4)
+      Non-Terminal: STMTS
+        Non-Terminal: TYPE_DEFINITIONS
+        Non-Terminal: DECLARATIONS
+        Non-Terminal: OTHER_STMTS
+          Non-Terminal: STMT
+            Non-Terminal: ASSIGNMENT_STMT
+              Non-Terminal: SINGLE_OR_REC_ID
+                Terminal: TK_ID (lexeme: "b5d", line: 5)
+              Terminal: TK_ASSIGNOP (lexeme: "<---", line: 5)
+              Non-Terminal: ARITHMETIC_EXPRESSION
+                Non-Terminal: TERM
+                  Non-Terminal: VAR
+                    Non-Terminal: SINGLE_OR_REC_ID
+                      Terminal: TK_ID (lexeme: "c2", line: 5)
+                Non-Terminal: ARITHMETIC_OPERATION
+                  Non-Terminal: OPERATOR
+                    Terminal: TK_PLUS (lexeme: "+", line: 5)
+                  Non-Terminal: TERM
+                    Non-Terminal: VAR
+                      Terminal: TK_NUM (lexeme: "234", line: 5)
+                  Non-Terminal: ARITHMETIC_OPERATION
+                    Non-Terminal: OPERATOR
+                      Terminal: TK_MINUS (lexeme: "-", line: 5)
+                    Non-Terminal: TERM
+                      Non-Terminal: VAR
+                        Non-Terminal: SINGLE_OR_REC_ID
+                          Terminal: TK_ID (lexeme: "d2cd", line: 5)
+                    Non-Terminal: ARITHMETIC_OPERATION
+              Terminal: TK_SEM (lexeme: ";", line: 5)
+          Non-Terminal: OTHER_STMTS
+            Non-Terminal: STMT
+              Non-Terminal: ASSIGNMENT_STMT
+                Non-Terminal: SINGLE_OR_REC_ID
+                  Terminal: TK_ID (lexeme: "d3", line: 6)
+                Terminal: TK_ASSIGNOP (lexeme: "<---", line: 6)
+                Non-Terminal: ARITHMETIC_EXPRESSION
+                  Non-Terminal: TERM
+                    Non-Terminal: VAR
+                      Non-Terminal: SINGLE_OR_REC_ID
+                        Terminal: TK_ID (lexeme: "b5d", line: 6)
+                  Non-Terminal: ARITHMETIC_OPERATION
+                    Non-Terminal: OPERATOR
+                      Terminal: TK_PLUS (lexeme: "+", line: 6)
+                    Non-Terminal: TERM
+                      Non-Terminal: VAR
+                        Terminal: TK_NUM (lexeme: "20", line: 6)
+                    Non-Terminal: ARITHMETIC_OPERATION
+                Terminal: TK_SEM (lexeme: ";", line: 6)
+            Non-Terminal: OTHER_STMTS
+        Non-Terminal: RETURN_STMT
+          Terminal: TK_RETURN (lexeme: "return", line: 7)
+          Non-Terminal: OPTIONAL_RETURN
+            Terminal: TK_SQL (lexeme: "[", line: 7)
+            Non-Terminal: ID_LIST
+              Terminal: TK_ID (lexeme: "b5d", line: 7)
+              Non-Terminal: MORE_IDS
+                Terminal: TK_COMMA (lexeme: ",", line: 7)
+                Non-Terminal: ID_LIST
+                  Terminal: TK_ID (lexeme: "d3", line: 7)
+                  Non-Terminal: MORE_IDS
+            Terminal: TK_SQR (lexeme: "]", line: 7)
+          Terminal: TK_SEM (lexeme: ";", line: 7)
+      Terminal: TK_END (lexeme: "end", line: 8)
+    Non-Terminal: OTHER_FUNCTIONS
+  Non-Terminal: MAIN_FUNCTION
+    Terminal: TK_MAIN (lexeme: "_main", line: 11)
+    Non-Terminal: STMTS
+      Non-Terminal: TYPE_DEFINITIONS
+      Non-Terminal: DECLARATIONS
+        Non-Terminal: DECLARATION
+          Terminal: TK_TYPE (lexeme: "type", line: 13)
+          Non-Terminal: DATA_TYPE
+            Non-Terminal: PRIMITIVE_DATATYPE
+              Terminal: TK_INT (lexeme: "int", line: 13)
+          Terminal: TK_COLON (lexeme: ":", line: 13)
+          Terminal: TK_ID (lexeme: "b4d333", line: 13)
+          Non-Terminal: GLOBAL_OR_NOT
+          Terminal: TK_SEM (lexeme: ";", line: 13)
+        Non-Terminal: DECLARATIONS
+          Non-Terminal: DECLARATION
+            Terminal: TK_TYPE (lexeme: "type", line: 14)
+            Non-Terminal: DATA_TYPE
+              Non-Terminal: PRIMITIVE_DATATYPE
+                Terminal: TK_INT (lexeme: "int", line: 14)
+            Terminal: TK_COLON (lexeme: ":", line: 14)
+            Terminal: TK_ID (lexeme: "c3ddd34", line: 14)
+            Non-Terminal: GLOBAL_OR_NOT
+            Terminal: TK_SEM (lexeme: ";", line: 14)
+          Non-Terminal: DECLARATIONS
+            Non-Terminal: DECLARATION
+              Terminal: TK_TYPE (lexeme: "type", line: 14)
+              Non-Terminal: DATA_TYPE
+                Non-Terminal: PRIMITIVE_DATATYPE
+                  Terminal: TK_INT (lexeme: "int", line: 14)
+              Terminal: TK_COLON (lexeme: ":", line: 14)
+              Terminal: TK_ID (lexeme: "c2d3", line: 14)
+              Non-Terminal: GLOBAL_OR_NOT
+              Terminal: TK_SEM (lexeme: ";", line: 14)
+            Non-Terminal: DECLARATIONS
+              Non-Terminal: DECLARATION
+                Terminal: TK_TYPE (lexeme: "type", line: 14)
+                Non-Terminal: DATA_TYPE
+                  Non-Terminal: PRIMITIVE_DATATYPE
+                    Terminal: TK_INT (lexeme: "int", line: 14)
+                Terminal: TK_COLON (lexeme: ":", line: 14)
+                Terminal: TK_ID (lexeme: "c2d4", line: 14)
+                Non-Terminal: GLOBAL_OR_NOT
+                Terminal: TK_SEM (lexeme: ";", line: 14)
+              Non-Terminal: DECLARATIONS
+      Non-Terminal: OTHER_STMTS
+        Non-Terminal: STMT
+          Non-Terminal: IO_STMT
+            Terminal: TK_READ (lexeme: "read", line: 15)
+            Terminal: TK_OP (lexeme: "(", line: 15)
+            Non-Terminal: VAR
+              Non-Terminal: SINGLE_OR_REC_ID
+                Terminal: TK_ID (lexeme: "b4d333", line: 15)
+            Terminal: TK_CL (lexeme: ")", line: 15)
+            Terminal: TK_SEM (lexeme: ";", line: 15)
+        Non-Terminal: OTHER_STMTS
+          Non-Terminal: STMT
+            Non-Terminal: IO_STMT
+              Terminal: TK_READ (lexeme: "read", line: 15)
+              Terminal: TK_OP (lexeme: "(", line: 15)
+              Non-Terminal: VAR
+                Non-Terminal: SINGLE_OR_REC_ID
+                  Terminal: TK_ID (lexeme: "c3ddd34", line: 15)
+              Terminal: TK_CL (lexeme: ")", line: 15)
+              Terminal: TK_SEM (lexeme: ";", line: 15)
+          Non-Terminal: OTHER_STMTS
+            Non-Terminal: STMT
+              Non-Terminal: FUN_CALL_STMT
+                Non-Terminal: OUTPUT_PARAMETERS
+                  Terminal: TK_SQL (lexeme: "[", line: 16)
+                  Non-Terminal: ID_LIST
+                    Terminal: TK_ID (lexeme: "c2d3", line: 16)
+                    Non-Terminal: MORE_IDS
+                      Terminal: TK_COMMA (lexeme: ",", line: 16)
+                      Non-Terminal: ID_LIST
+                        Terminal: TK_ID (lexeme: "c2d4", line: 16)
+                        Non-Terminal: MORE_IDS
+                  Terminal: TK_SQR (lexeme: "]", line: 16)
+                  Terminal: TK_ASSIGNOP (lexeme: "<---", line: 16)
+                Terminal: TK_CALL (lexeme: "call", line: 16)
+                Terminal: TK_FUNID (lexeme: "_function1", line: 16)
+                Terminal: TK_WITH (lexeme: "with", line: 16)
+                Terminal: TK_PARAMETERS (lexeme: "parameters", line: 16)
+                Non-Terminal: INPUT_PARAMETERS
+                  Terminal: TK_SQL (lexeme: "[", line: 16)
+                  Non-Terminal: ID_LIST
+                    Terminal: TK_ID (lexeme: "b4d333", line: 16)
+                    Non-Terminal: MORE_IDS
+                      Terminal: TK_COMMA (lexeme: ",", line: 16)
+                      Non-Terminal: ID_LIST
+                        Terminal: TK_ID (lexeme: "c3ddd34", line: 16)
+                        Non-Terminal: MORE_IDS
+                  Terminal: TK_SQR (lexeme: "]", line: 16)
+                Terminal: TK_SEM (lexeme: ";", line: 16)
+            Non-Terminal: OTHER_STMTS
+              Non-Terminal: STMT
+                Non-Terminal: IO_STMT
+                  Terminal: TK_WRITE (lexeme: "write", line: 17)
+                  Terminal: TK_OP (lexeme: "(", line: 17)
+                  Non-Terminal: VAR
+                    Non-Terminal: SINGLE_OR_REC_ID
+                      Terminal: TK_ID (lexeme: "c2d3", line: 17)
+                  Terminal: TK_CL (lexeme: ")", line: 17)
+                  Terminal: TK_SEM (lexeme: ";", line: 17)
+              Non-Terminal: OTHER_STMTS
+                Non-Terminal: STMT
+                  Non-Terminal: IO_STMT
+                    Terminal: TK_WRITE (lexeme: "write", line: 17)
+                    Terminal: TK_OP (lexeme: "(", line: 17)
+                    Non-Terminal: VAR
+                      Non-Terminal: SINGLE_OR_REC_ID
+                        Terminal: TK_ID (lexeme: "c2d4", line: 17)
+                    Terminal: TK_CL (lexeme: ")", line: 17)
+                    Terminal: TK_SEM (lexeme: ";", line: 17)
+                Non-Terminal: OTHER_STMTS
+      Non-Terminal: RETURN_STMT
+        Terminal: TK_RETURN (lexeme: "return", line: 18)
+        Non-Terminal: OPTIONAL_RETURN
+        Terminal: TK_SEM (lexeme: ";", line: 18)
+    Terminal: TK_END (lexeme: "end", line: 19)

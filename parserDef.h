@@ -223,7 +223,7 @@ typedef struct TermStack {
     .expansion = NULL,      \
     .expansion_length = 0}
 
-const GrammarRule grammar[] = {
+static const GrammarRule grammar[] = {
     // 1. <program> ===> <otherFunctions> <mainFunction>
     RULE(VAR_PROGRAM, V(VAR_OTHER_FUNCTIONS), V(VAR_MAIN_FUNCTION)),
 
@@ -413,6 +413,6 @@ const GrammarRule grammar[] = {
     RULE(VAR_A, T(TK_RECORD)),
     RULE(VAR_A, T(TK_UNION))};
 
-const int GRAMMAR_SIZE = sizeof(grammar) / sizeof(GrammarRule);
+static const int GRAMMAR_SIZE = sizeof(grammar) / sizeof(GrammarRule);
 
 #endif
