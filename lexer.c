@@ -321,7 +321,10 @@ Token getNextToken() {
       else {
         ind--; if(ind < 0) ind = TOTAL_B_SIZE - 1;
         generated_token = create_token(token_start, ind, TK_FUNID, line_number);
-        generated_token.type = check_keyword(generated_token.token);
+        TokenType possible = check_keyword(generated_token.token);
+        if (possible != TK_FIELDID) { 
+            generated_token.type = possible;
+        }
         token_ready = true;
       }
       break;
