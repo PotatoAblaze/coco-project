@@ -12,7 +12,8 @@ bool id_num(char c);
 void print_syntax_error(int line_number);
 void remove_comments(char* file_name); 
 TokenType check_keyword(char* lexeme);
-
+void init_lexer(char* file_name);
+Token getNextToken();
 TokenArray init_token_array();
 void arr_push_token(TokenArray* ta, Token token);
 void push_token(TokenArray* ta, char* input_buffer, int token_start,
