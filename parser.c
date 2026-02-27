@@ -118,7 +118,6 @@ void populate_first_and_follow(FirstAndFollowEntry entries[], int grammar_count,
 			if (!is_finished)
 			{
 				changed |= set_insert(&entries[curr_var].first, TK_EPSILON);
-				// if(changed) printf("changed 3\n");
 			}
 		}
 	}
@@ -263,6 +262,10 @@ const char* get_term_name(Term term) {
 }
 
 ParseTreeNode* generate_parse_tree(int token_count, Token** tokens, int* token_index, ParseTable pt, const GrammarRule rules[], Term curr_term) {
+	while (*token_index < token_count && tokens[*token_index]->type == TK_COMMENT) {
+        (*token_index)++;
+    }
+
 	ParseTreeNode* new_node = create_new_tree_node(NULL, curr_term);
 	if (curr_term.is_terminal) {
 		if (tokens[*token_index]->type == curr_term.terminal_type) {

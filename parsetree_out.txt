@@ -1,0 +1,228 @@
+Non-Terminal: PROGRAM
+  Non-Terminal: OTHER_FUNCTIONS
+    Non-Terminal: FUNCTION
+      Terminal: TK_FUNID (lexeme: "_computeFunctionValue", line: 6)
+      Non-Terminal: INPUT_PAR
+        Terminal: TK_INPUT (lexeme: "input", line: 6)
+        Terminal: TK_PARAMETER (lexeme: "parameter", line: 6)
+        Terminal: TK_LIST (lexeme: "list", line: 6)
+        Terminal: TK_SQL (lexeme: "[", line: 6)
+        Non-Terminal: PARAMETER_LIST
+          Non-Terminal: DATA_TYPE
+            Non-Terminal: PRIMITIVE_DATATYPE
+              Terminal: TK_INT (lexeme: "int", line: 6)
+          Terminal: TK_ID (lexeme: "c3", line: 6)
+          Non-Terminal: REMAINING_LIST
+            Terminal: TK_COMMA (lexeme: ",", line: 6)
+            Non-Terminal: PARAMETER_LIST
+              Non-Terminal: DATA_TYPE
+                Non-Terminal: PRIMITIVE_DATATYPE
+                  Terminal: TK_INT (lexeme: "int", line: 6)
+              Terminal: TK_ID (lexeme: "c4", line: 6)
+              Non-Terminal: REMAINING_LIST
+                Terminal: TK_COMMA (lexeme: ",", line: 6)
+                Non-Terminal: PARAMETER_LIST
+                  Non-Terminal: DATA_TYPE
+                    Non-Terminal: PRIMITIVE_DATATYPE
+                      Terminal: TK_INT (lexeme: "int", line: 6)
+                  Terminal: TK_ID (lexeme: "c5", line: 6)
+                  Non-Terminal: REMAINING_LIST
+        Terminal: TK_SQR (lexeme: "]", line: 6)
+      Non-Terminal: OUTPUT_PAR
+        Terminal: TK_OUTPUT (lexeme: "output", line: 7)
+        Terminal: TK_PARAMETER (lexeme: "parameter", line: 7)
+        Terminal: TK_LIST
+        Terminal: TK_SQL (lexeme: "[", line: 7)
+        Non-Terminal: PARAMETER_LIST
+          Non-Terminal: DATA_TYPE
+            Non-Terminal: PRIMITIVE_DATATYPE
+              Terminal: TK_REAL (lexeme: "real", line: 7)
+          Terminal: TK_ID (lexeme: "c6", line: 7)
+          Non-Terminal: REMAINING_LIST
+        Terminal: TK_SQR (lexeme: "]", line: 7)
+      Terminal: TK_SEM (lexeme: ";", line: 7)
+      Non-Terminal: STMTS
+        Non-Terminal: TYPE_DEFINITIONS
+        Non-Terminal: DECLARATIONS
+          Non-Terminal: DECLARATION
+            Terminal: TK_TYPE (lexeme: "type", line: 8)
+            Non-Terminal: DATA_TYPE
+              Non-Terminal: PRIMITIVE_DATATYPE
+                Terminal: TK_REAL (lexeme: "real", line: 8)
+            Terminal: TK_COLON (lexeme: ":", line: 8)
+            Terminal: TK_ID (lexeme: "d4cbcccccccccccccbbbbbbbbdddd5222222222222633333333333377", line: 8)
+            Non-Terminal: GLOBAL_OR_NOT
+            Terminal: TK_SEM (lexeme: ";", line: 8)
+          Non-Terminal: DECLARATIONS
+            Non-Terminal: DECLARATION
+              Terminal: TK_TYPE (lexeme: "type", line: 9)
+              Non-Terminal: DATA_TYPE
+                Non-Terminal: PRIMITIVE_DATATYPE
+                  Terminal: TK_REAL (lexeme: "real", line: 9)
+              Terminal: TK_COLON (lexeme: ":", line: 9)
+              Terminal: TK_ID (lexeme: "c4bbb", line: 9)
+              Non-Terminal: GLOBAL_OR_NOT
+              Terminal: TK_SEM (lexeme: ";", line: 9)
+            Non-Terminal: DECLARATIONS
+        Non-Terminal: OTHER_STMTS
+          Non-Terminal: STMT
+            Non-Terminal: ASSIGNMENT_STMT
+              Non-Terminal: SINGLE_OR_REC_ID
+                Terminal: TK_ID (lexeme: "c6", line: 10)
+                Non-Terminal: OPTION_SINGLE_CONSTRUCTED
+              Terminal: TK_ASSIGNOP (lexeme: "<---", line: 10)
+              Non-Terminal: ARITHMETIC_EXPRESSION
+                Non-Terminal: TERM
+                  Non-Terminal: FACTOR
+                    Non-Terminal: VAR
+                      Non-Terminal: SINGLE_OR_REC_ID
+                        Terminal: TK_ID (lexeme: "d4cbcd5677", line: 11)
+                        Non-Terminal: OPTION_SINGLE_CONSTRUCTED
+                  Non-Terminal: TERM_PRIME
+                Non-Terminal: EXP_PRIME
+                  Non-Terminal: LOW_PRECEDENCE_OPERATORS
+                    Terminal: TK_PLUS (lexeme: "+", line: 11)
+                  Non-Terminal: TERM
+                    Non-Terminal: FACTOR
+                      Non-Terminal: VAR
+                        Terminal: TK_NUM (lexeme: "2", line: 11)
+                    Non-Terminal: TERM_PRIME
+                      Non-Terminal: HIGH_PRECEDENCE_OPERATORS
+                        Terminal: TK_MUL (lexeme: "*", line: 11)
+                      Non-Terminal: FACTOR
+                        Non-Terminal: VAR
+                          Non-Terminal: SINGLE_OR_REC_ID
+                            Terminal: TK_ID (lexeme: "c4", line: 11)
+                            Non-Terminal: OPTION_SINGLE_CONSTRUCTED
+                      Non-Terminal: TERM_PRIME
+                  Non-Terminal: EXP_PRIME
+                    Non-Terminal: LOW_PRECEDENCE_OPERATORS
+                      Terminal: TK_MINUS (lexeme: "-", line: 11)
+                    Non-Terminal: TERM
+                      Non-Terminal: FACTOR
+                        Terminal: TK_OP (lexeme: "(", line: 11)
+                        Non-Terminal: ARITHMETIC_EXPRESSION
+                          Non-Terminal: TERM
+                            Non-Terminal: FACTOR
+                              Non-Terminal: VAR
+                                Non-Terminal: SINGLE_OR_REC_ID
+                                  Terminal: TK_ID (lexeme: "c5", line: 11)
+                                  Non-Terminal: OPTION_SINGLE_CONSTRUCTED
+                            Non-Terminal: TERM_PRIME
+                          Non-Terminal: EXP_PRIME
+                            Non-Terminal: LOW_PRECEDENCE_OPERATORS
+                              Terminal: TK_MINUS (lexeme: "-", line: 11)
+                            Non-Terminal: TERM
+                              Non-Terminal: FACTOR
+                                Non-Terminal: VAR
+                                  Terminal: TK_NUM (lexeme: "5", line: 11)
+                              Non-Terminal: TERM_PRIME
+                            Non-Terminal: EXP_PRIME
+                        Terminal: TK_CL (lexeme: ")", line: 11)
+                      Non-Terminal: TERM_PRIME
+                    Non-Terminal: EXP_PRIME
+              Terminal: TK_SEM
+          Non-Terminal: OTHER_STMTS
+            Non-Terminal: STMT
+              Non-Terminal: ASSIGNMENT_STMT
+                Non-Terminal: SINGLE_OR_REC_ID
+                  Terminal: TK_ID (lexeme: "c4bbb", line: 12)
+                  Non-Terminal: OPTION_SINGLE_CONSTRUCTED
+                Terminal: TK_ASSIGNOP (lexeme: "<---", line: 12)
+                Non-Terminal: ARITHMETIC_EXPRESSION
+                  Non-Terminal: TERM
+                    Non-Terminal: FACTOR
+                      Terminal: TK_OP (lexeme: "(", line: 12)
+                      Non-Terminal: ARITHMETIC_EXPRESSION
+                        Non-Terminal: TERM
+                          Non-Terminal: FACTOR
+                            Terminal: TK_OP (lexeme: "(", line: 12)
+                            Non-Terminal: ARITHMETIC_EXPRESSION
+                              Non-Terminal: TERM
+                                Non-Terminal: FACTOR
+                                  Non-Terminal: VAR
+                                    Non-Terminal: SINGLE_OR_REC_ID
+                                      Terminal: TK_ID (lexeme: "d4cbcd5677", line: 12)
+                                      Non-Terminal: OPTION_SINGLE_CONSTRUCTED
+                                Non-Terminal: TERM_PRIME
+                              Non-Terminal: EXP_PRIME
+                                Non-Terminal: LOW_PRECEDENCE_OPERATORS
+                                  Terminal: TK_MINUS (lexeme: "-", line: 12)
+                                Non-Terminal: TERM
+                                  Non-Terminal: FACTOR
+                                    Non-Terminal: VAR
+                                      Terminal: TK_RNUM (lexeme: "2.35", line: 12)
+                                  Non-Terminal: TERM_PRIME
+                                Non-Terminal: EXP_PRIME
+                            Terminal: TK_CL (lexeme: ")", line: 12)
+                          Non-Terminal: TERM_PRIME
+                            Non-Terminal: HIGH_PRECEDENCE_OPERATORS
+                              Terminal: TK_MUL (lexeme: "*", line: 12)
+                            Non-Terminal: FACTOR
+                              Terminal: TK_OP (lexeme: "(", line: 12)
+                              Non-Terminal: ARITHMETIC_EXPRESSION
+                                Non-Terminal: TERM
+                                  Non-Terminal: FACTOR
+                                    Non-Terminal: VAR
+                                      Terminal: TK_NUM (lexeme: "2345", line: 12)
+                                  Non-Terminal: TERM_PRIME
+                                Non-Terminal: EXP_PRIME
+                                  Non-Terminal: LOW_PRECEDENCE_OPERATORS
+                                    Terminal: TK_MINUS (lexeme: "-", line: 12)
+                                  Non-Terminal: TERM
+                                    Non-Terminal: FACTOR
+                                      Non-Terminal: VAR
+                                        Terminal: TK_NUM (lexeme: "234", line: 12)
+                                    Non-Terminal: TERM_PRIME
+                                      Non-Terminal: HIGH_PRECEDENCE_OPERATORS
+                                        Terminal: TK_MUL (lexeme: "*", line: 12)
+                                      Non-Terminal: FACTOR
+                                        Non-Terminal: VAR
+                                          Terminal: TK_NUM (lexeme: "8", line: 12)
+                                      Non-Terminal: TERM_PRIME
+                                  Non-Terminal: EXP_PRIME
+                              Terminal: TK_CL (lexeme: ")", line: 12)
+                            Non-Terminal: TERM_PRIME
+                        Non-Terminal: EXP_PRIME
+                      Terminal: TK_CL (lexeme: ")", line: 12)
+                    Non-Terminal: TERM_PRIME
+                  Non-Terminal: EXP_PRIME
+                    Non-Terminal: LOW_PRECEDENCE_OPERATORS
+                      Terminal: TK_PLUS (lexeme: "+", line: 12)
+                    Non-Terminal: TERM
+                      Non-Terminal: FACTOR
+                        Non-Terminal: VAR
+                          Terminal: TK_NUM (lexeme: "5", line: 12)
+                      Non-Terminal: TERM_PRIME
+                        Non-Terminal: HIGH_PRECEDENCE_OPERATORS
+                          Terminal: TK_MUL (lexeme: "*", line: 12)
+                        Non-Terminal: FACTOR
+                          Non-Terminal: VAR
+                            Non-Terminal: SINGLE_OR_REC_ID
+                              Terminal: TK_ID (lexeme: "c3", line: 12)
+                              Non-Terminal: OPTION_SINGLE_CONSTRUCTED
+                        Non-Terminal: TERM_PRIME
+                    Non-Terminal: EXP_PRIME
+                Terminal: TK_SEM (lexeme: ";", line: 12)
+            Non-Terminal: OTHER_STMTS
+              Non-Terminal: STMT
+                Non-Terminal: CONDITIONAL_STMT
+                  Terminal: TK_IF (lexeme: "if", line: 13)
+                  Terminal: TK_OP (lexeme: "(", line: 13)
+                  Non-Terminal: BOOLEAN_EXPRESSION
+                    Terminal: TK_OP (lexeme: "(", line: 13)
+                    Non-Terminal: BOOLEAN_EXPRESSION
+                      Terminal: TK_NOT (lexeme: "~", line: 13)
+                      Terminal: TK_OP (lexeme: "(", line: 13)
+                      Non-Terminal: BOOLEAN_EXPRESSION
+                        Non-Terminal: VAR
+                          Non-Terminal: SINGLE_OR_REC_ID
+                            Terminal: TK_ID (lexeme: "c4bbb", line: 13)
+                            Non-Terminal: OPTION_SINGLE_CONSTRUCTED
+                        Non-Terminal: RELATIONAL_OP
+                          Terminal: TK_EQ (lexeme: "==", line: 13)
+                        Non-Terminal: VAR
+                          Terminal: TK_NUM (lexeme: "0", line: 13)
+                      Terminal: TK_CL (lexeme: ")", line: 13)
+                    Terminal: TK_CL (lexeme: ")", line: 13)
+                    Non-Terminal: LOGICAL_OP

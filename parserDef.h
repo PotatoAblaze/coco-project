@@ -166,7 +166,7 @@ typedef struct ParseTreeNode {
     Token* token;
     Term term;
     int child_count;
-    struct ParseTreeNode* children[5];
+    struct ParseTreeNode* children[10];
 } ParseTreeNode;
 
 typedef struct TermStack {

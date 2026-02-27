@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#define FILE_INPUT_BUFFER_SIZE 10000000
 
 int prompt() {
 	printf("Select task:\n");
@@ -19,65 +18,52 @@ int prompt() {
 	return t;
 }
 
-char* read_file(char* file_name) {
-	char* input_buffer = (char*)malloc(sizeof(char) * FILE_INPUT_BUFFER_SIZE);
-	FILE* source_file = fopen(file_name, "r");
-	if (source_file == NULL) {
-		perror("opening testcase file failed");
-		exit(1);
-	}
-	char read_buffer[128];
-	while (fgets(read_buffer, 128, source_file)) {
-		strcat(input_buffer, read_buffer);
-	}
-	return input_buffer;
-}
-
 int main(int argc, char** argv) {
 
 	if (argc != 3) {
-		printf("Invalid file_name. Correct format: ./<executable>  <testcase .txt "
-			"file>  <parseTree output .txt file>");
+		printf("Invalid input. Correct format: ./stage1exe  <testcase .txt file>  <parseTree output .txt file>");
 		exit(1);
 	}
 
 	int t;
-	char* input = read_file(argv[1]);
+	char* file_name = argv[1];
 
 	while ((t = prompt())) {
 		switch (t) {
-			char* output;
 			case 0: {
 					exit(0);
 					break;
 				}
 
 			case 1: {
-					output = (char*)malloc(sizeof(char) * FILE_INPUT_BUFFER_SIZE);
-					remove_comments(input, output);
-					printf("%s\n", output);
+					remove_comments(file_name);
+					printf("\n");
 					break;
 				}
 
 			case 2: {
-					output = (char*)malloc(sizeof(char) * FILE_INPUT_BUFFER_SIZE);
-					remove_comments(input, output);
-					TokenArray ta = get_tokens(output);
-					int last_line_no = -1;
+					TokenArray ta = get_tokens(file_name);
 					for (int x = 0; x < ta.size; x++) {
-						if (last_line_no != ta.arr[x].line_number) {
-							last_line_no = ta.arr[x].line_number;
-							printf("\n%d\t", last_line_no);
-						}
-						printf("%s ", get_token_name(ta.arr[x].type));
+                        if (ta.arr[x].type == TK_EOF) continue;
+                        
+						printf("Line no. %-4d\t Lexeme %-20s\t Token %s\n", 
+                               ta.arr[x].line_number, 
+                               ta.arr[x].token, 
+                               get_token_name(ta.arr[x].type));
 					}
+					for (int x = 0; x < ta.size; x++) {
+						if (ta.arr[x].type != TK_EOF && ta.arr[x].token != NULL) {
+                            free(ta.arr[x].token);
+                        }
+					}
+					if (ta.arr != NULL) free(ta.arr);
+					
+					printf("\n");
 					break;
 				}
 
 			case 3: {
-					output = (char*)malloc(sizeof(char) * FILE_INPUT_BUFFER_SIZE);
-					remove_comments(input, output);
-					TokenArray ta = get_tokens(output);
+					TokenArray ta = get_tokens(file_name);
 					Token** tokens = (Token**)malloc(sizeof(Token*) * ta.size);
 					for (int i = 0; i < ta.size; i++) {
 						tokens[i] = &ta.arr[i];
@@ -109,6 +95,12 @@ int main(int argc, char** argv) {
 					print_parse_tree_to_file(root, 0, out_file);
 					fclose(out_file);
 					printf("Parse tree printed to %s\n", argv[2]);
+					for (int x = 0; x < ta.size; x++) {
+						if (ta.arr[x].type != TK_EOF && ta.arr[x].token != NULL) {
+                            free(ta.arr[x].token);
+                        }
+					}
+					if (ta.arr != NULL) free(ta.arr);
 					free(tokens);
 					break;
 				}
@@ -120,9 +112,7 @@ int main(int argc, char** argv) {
 					start_time = clock();
 
 					// Lexer
-					output = (char*)malloc(sizeof(char) * FILE_INPUT_BUFFER_SIZE);
-					remove_comments(input, output);
-					TokenArray ta = get_tokens(output);
+					TokenArray ta = get_tokens(file_name);
 					Token** tokens = (Token**)malloc(sizeof(Token*) * ta.size);
 					for (int i = 0; i < ta.size; i++) {
 						tokens[i] = &ta.arr[i];
@@ -155,6 +145,12 @@ int main(int argc, char** argv) {
 					printf("Total CPU time: %f ticks\n", total_CPU_time);
 					printf("Total CPU time in seconds: %f seconds\n", total_CPU_time_in_seconds);
 
+					for (int x = 0; x < ta.size; x++) {
+						if (ta.arr[x].type != TK_EOF && ta.arr[x].token != NULL) {
+                            free(ta.arr[x].token);
+                        }
+					}
+					if (ta.arr != NULL) free(ta.arr);
 					free(tokens);
 					break;
 				}
