@@ -44,17 +44,16 @@ void print_unknown_pattern(int token_start, int current_ind, int line, char* buf
 
 void remove_comments(char input[], char output[]) {
 	bool comment_flag = false;
-	char c;
-	int i = 0; 
-	for(int x = 0; input[x] != '\0'; x++) {
-		char c = input[x]; 
+	int i = 0;
+	for (int x = 0; input[x] != '\0'; x++) {
+		char c = input[x];
 		if (c == '%') comment_flag = true;
 		else if (c == '\n') comment_flag = false;
-		if (!comment_flag) { 
-			output[i++] = c; 
+		if (!comment_flag) {
+			output[i++] = c;
 		}
 	}
-    output[i] = '\0'; 
+	output[i] = '\0';
 }
 
 TokenType check_keyword(char* lexeme) {
@@ -110,16 +109,16 @@ Token create_token(int token_start, int token_end, TokenType type, int current_l
 
 void init_lexer(const char* input) {
 	source_string = input;
-    source_length = strlen(input);
-    source_offset = 0;
+	source_length = strlen(input);
+	source_offset = 0;
 
-    int bytes_to_read = (source_length - source_offset < B_SIZE) ? (source_length - source_offset) : B_SIZE;
-    memcpy(input_buffer, source_string + source_offset, bytes_to_read);
-    source_offset += bytes_to_read;
+	int bytes_to_read = (source_length - source_offset < B_SIZE) ? (source_length - source_offset) : B_SIZE;
+	memcpy(input_buffer, source_string + source_offset, bytes_to_read);
+	source_offset += bytes_to_read;
 
 	if (bytes_to_read < B_SIZE) {
-        input_buffer[bytes_to_read] = '\0';
-    }
+		input_buffer[bytes_to_read] = '\0';
+	}
 
 	ind = 0;
 	line_number = 1;
@@ -175,10 +174,6 @@ Token getNextToken() {
 						case '&': current_state = 32; break;
 						case '<': current_state = 19; break;
 						case '>': current_state = 25; break;
-						default:
-							printf("Line %d Error: Unknown Symbol <%c>\n", line_number, c);
-							current_state = 0;
-							break;
 					}
 				}
 				break;
@@ -471,17 +466,16 @@ Token getNextToken() {
 
 		if (!is_eof) {
 			ind++;
-			// MODIFIED: Replaced fread with string chunk copying
 			if (ind == B_SIZE) {
-                int r = (source_length - source_offset < B_SIZE) ? (source_length - source_offset) : B_SIZE;
-                memcpy(input_buffer + B_SIZE, source_string + source_offset, r);
-                source_offset += r;
+				int r = (source_length - source_offset < B_SIZE) ? (source_length - source_offset) : B_SIZE;
+				memcpy(input_buffer + B_SIZE, source_string + source_offset, r);
+				source_offset += r;
 				if (r < B_SIZE) input_buffer[B_SIZE + r] = '\0';
 			}
 			else if (ind == TOTAL_B_SIZE) {
-                int r = (source_length - source_offset < B_SIZE) ? (source_length - source_offset) : B_SIZE;
-                memcpy(input_buffer, source_string + source_offset, r);
-                source_offset += r;
+				int r = (source_length - source_offset < B_SIZE) ? (source_length - source_offset) : B_SIZE;
+				memcpy(input_buffer, source_string + source_offset, r);
+				source_offset += r;
 				if (r < B_SIZE) input_buffer[r] = '\0';
 				ind = 0;
 			}

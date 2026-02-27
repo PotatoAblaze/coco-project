@@ -272,14 +272,6 @@ ParseTreeNode* generate_parse_tree(int token_count, Token** tokens, int* token_i
 		else {
 			// syntax error here, so we invoke panic mode error recovery procedure 
 			panic_mode_recovery(token_count, tokens, token_index, pt, curr_term);
-			// After recovery, if we've hit EOF or exhausted tokens, return the node as-is
-			if (*token_index >= token_count || tokens[*token_index]->type == TK_EOF) {
-				return new_node;
-			}
-			if (tokens[*token_index]->type == curr_term.terminal_type) {
-				new_node->token = tokens[*token_index];
-				(*token_index)++;
-			}
 		}
 	}
 	else {
@@ -400,22 +392,12 @@ void compute_synchronization_tokens(ParseTable pt, FirstAndFollowEntry entries[]
 // panic mode error recovery procedure 
 void panic_mode_recovery(int token_count, Token** tokens, int* token_index, ParseTable pt, Term curr_term)
 {
-	printf("Syntax error at line %d. unexpected token: %s\n",
+	printf("Line %d Error: Unexpected token: %s\n",
 		tokens[*token_index]->line_number,
 		get_token_name(tokens[*token_index]->type));
 
-	// If the expected symbol is a terminal, scan forward until we find it or hit EOF
+	// If the expected symbol is a terminal, just report the error and move forward
 	if (curr_term.is_terminal) {
-		while (*token_index < token_count) {
-			TokenType curr_token_type = tokens[*token_index]->type;
-			if (curr_token_type == TK_EOF) {
-				break;
-			}
-			if (curr_token_type == curr_term.terminal_type) {
-				break;
-			}
-			(*token_index)++;
-		}
 		return;
 	}
 
@@ -424,7 +406,6 @@ void panic_mode_recovery(int token_count, Token** tokens, int* token_index, Pars
 	{
 		TokenType curr_token_type = tokens[*token_index]->type;
 
-		// Stop if we reach the end of the file
 		if (curr_token_type == TK_EOF) {
 			break;
 		}
@@ -437,7 +418,6 @@ void panic_mode_recovery(int token_count, Token** tokens, int* token_index, Pars
 			break;
 		}
 
-		// Discard the current token and advance
 		(*token_index)++;
 	}
 }
