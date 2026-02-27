@@ -10,14 +10,14 @@ bool id_letter(char c);
 bool id_num(char c);
 
 void print_syntax_error(int line_number);
-void remove_comments(char* file_name); 
+void remove_comments(char input[], char output[]);
 TokenType check_keyword(char* lexeme);
-void init_lexer(char* file_name);
+void init_lexer(const char* input);
 Token getNextToken();
 TokenArray init_token_array();
 void arr_push_token(TokenArray* ta, Token token);
 void push_token(TokenArray* ta, char* input_buffer, int token_start,
-                int token_end, TokenType type, int line_number);
-TokenArray get_tokens(char* file_name);
+    int token_end, TokenType type, int line_number);
+TokenArray get_tokens(const char* input);
 
 #endif

@@ -73,9 +73,9 @@ void populate_first_and_follow(FirstAndFollowEntry entries[], int grammar_count,
 	for (int x = 0; x < VAR_COUNT; x++)
 	{
 		entries[x] = (FirstAndFollowEntry){
-				.term = (Term){.is_terminal = false, .var = x},
-				.first = (TerminalSet){.bits = 0LL},
-				.follow = (TerminalSet){.bits = 0LL},
+						.term = (Term){.is_terminal = false, .var = x},
+						.first = (TerminalSet){.bits = 0LL},
+						.follow = (TerminalSet){.bits = 0LL},
 		};
 	}
 
@@ -270,19 +270,49 @@ ParseTreeNode* generate_parse_tree(int token_count, Token** tokens, int* token_i
 			(*token_index)++;
 		}
 		else {
-			printf("error: invalid source code. syntax error in line %d. input token: %s, curr_term: %s\n", tokens[*token_index]->line_number, get_token_name(tokens[*token_index]->type), get_term_name(curr_term));
-			exit(1);
+			// syntax error here, so we invoke panic mode error recovery procedure 
+			panic_mode_recovery(token_count, tokens, token_index, pt, curr_term);
+			// After recovery, if we've hit EOF or exhausted tokens, return the node as-is
+			if (*token_index >= token_count || tokens[*token_index]->type == TK_EOF) {
+				return new_node;
+			}
+			if (tokens[*token_index]->type == curr_term.terminal_type) {
+				new_node->token = tokens[*token_index];
+				(*token_index)++;
+			}
 		}
 	}
 	else {
 		Variable curr_var = curr_term.var;
 		int rule_index = pt[curr_var][tokens[*token_index]->type];
 		if (rule_index == -1) {
-			printf("error: invalid source code. syntax error in line %d. input token: %s, curr_term: %s\n", tokens[*token_index]->line_number, get_token_name(tokens[*token_index]->type), get_term_name(curr_term));
-			exit(1);
+			panic_mode_recovery(token_count, tokens, token_index, pt, curr_term);
+			if (*token_index >= token_count || tokens[*token_index]->type == TK_EOF) {
+				return new_node;
+			}
+			// Re-lookup the rule after recovery
+			rule_index = pt[curr_var][tokens[*token_index]->type];
+			if (rule_index == -1) {
+				return new_node;
+			}
+		}
+		// Handle sync token (-2): skip expansion and return empty node
+		if (rule_index == -2) {
+			return new_node;
 		}
 		for (int x = 0; x < rules[rule_index].expansion_length; x++) {
-			new_node->children[new_node->child_count++] = generate_parse_tree(token_count, tokens, token_index, pt, rules, rules[rule_index].expansion[x]);
+			if (*token_index >= token_count) {
+				break;
+			}
+
+			Term next_term = rules[rule_index].expansion[x];
+			if (tokens[*token_index]->type == TK_EOF) {
+				if (!(next_term.is_terminal && next_term.terminal_type == TK_EOF)) {
+					break;
+				}
+			}
+
+			new_node->children[new_node->child_count++] = generate_parse_tree(token_count, tokens, token_index, pt, rules, next_term);
 		}
 	}
 
@@ -342,6 +372,73 @@ void print_parse_tree_to_file(ParseTreeNode* node, int depth, FILE* file) {
 		for (int i = 0; i < node->child_count; i++) {
 			print_parse_tree_to_file(node->children[i], depth + 1, file);
 		}
+	}
+}
+
+// compute synchronization tokens here 
+void compute_synchronization_tokens(ParseTable pt, FirstAndFollowEntry entries[])
+{
+	for (int x = 0; x < VAR_COUNT; x++)
+	{
+		TerminalSet follow_set = entries[x].follow;
+		for (int y = 0; y < TK_COUNT; y++)
+		{
+			if (set_contains(follow_set, y))
+			{
+				// In panic mode recovery, if the table entry is empty, 
+				// we place a synchronization token (represented by -2) 
+				// based on the FOLLOW set of the variable.
+				if (pt[x][y] == -1)
+				{
+					pt[x][y] = -2;
+				}
+			}
+		}
+	}
+}
+
+// panic mode error recovery procedure 
+void panic_mode_recovery(int token_count, Token** tokens, int* token_index, ParseTable pt, Term curr_term)
+{
+	printf("Syntax error at line %d. unexpected token: %s\n",
+		tokens[*token_index]->line_number,
+		get_token_name(tokens[*token_index]->type));
+
+	// If the expected symbol is a terminal, scan forward until we find it or hit EOF
+	if (curr_term.is_terminal) {
+		while (*token_index < token_count) {
+			TokenType curr_token_type = tokens[*token_index]->type;
+			if (curr_token_type == TK_EOF) {
+				break;
+			}
+			if (curr_token_type == curr_term.terminal_type) {
+				break;
+			}
+			(*token_index)++;
+		}
+		return;
+	}
+
+	// Non-terminal case: scan forward until we find a token in FIRST or FOLLOW (sync token)
+	while (*token_index < token_count)
+	{
+		TokenType curr_token_type = tokens[*token_index]->type;
+
+		// Stop if we reach the end of the file
+		if (curr_token_type == TK_EOF) {
+			break;
+		}
+
+		int table_entry = pt[curr_term.var][curr_token_type];
+
+		// If we find a valid rule (>= 0) or a sync token (-2), stop discarding
+		if (table_entry != -1)
+		{
+			break;
+		}
+
+		// Discard the current token and advance
+		(*token_index)++;
 	}
 }
 
