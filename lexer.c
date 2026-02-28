@@ -97,6 +97,7 @@ Token create_token(int token_start, int token_end, TokenType type, int current_l
   
   if (type == TK_ID && len > 20) {
       printf("Line %d \tError: Variable Identifier is longer than the prescribed length of 20 characters.\n", current_line);
+      type = TK_COMMENT;
   }
   
   Token token = { .type = type, .line_number = current_line, .token = token_string };

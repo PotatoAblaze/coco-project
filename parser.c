@@ -310,6 +310,7 @@ ParseTreeNode* generate_parse_tree(int token_count, Token** tokens, int* token_i
         }
         // Handle sync token (-2): skip expansion and return empty node
         if (rule_index == -2) {
+            printf("Line %d Error: Invalid token %s encountered with value %s stack top %s\n", tokens[*token_index]->line_number, get_token_name(tokens[*token_index]->type), tokens[*token_index]->token, get_variable_name(curr_var));
             return new_node;
         }
         for (int x = 0; x < rules[rule_index].expansion_length; x++) {
