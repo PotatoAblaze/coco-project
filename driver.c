@@ -74,6 +74,7 @@ int main(int argc, char** argv) {
 
 					ParseTable pt;
 					compute_parse_table(pt, VAR_COUNT, entries, GRAMMAR_SIZE, grammar);
+                    compute_synchronization_tokens(pt, entries); 
 
 					int token_index = 0;
 					ParseTreeNode* root = generate_parse_tree(

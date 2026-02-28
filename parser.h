@@ -13,6 +13,7 @@ ParseTreeNode* generate_parse_tree(int token_count, Token** tokens, int* token_i
 void test_first_computation();
 void print_parse_tree_inorder(ParseTreeNode* node, int depth);
 void print_parse_tree_to_file(ParseTreeNode* node, int depth, FILE* file);
+void compute_synchronization_tokens(ParseTable pt, FirstAndFollowEntry entries[]); 
 void panic_mode_recovery(int token_count, Token** tokens, int* token_index, ParseTable pt, Term curr_term); 
 
 #endif
