@@ -1,6 +1,7 @@
 #ifndef LEXER_H
 #define LEXER_H
 #include <stdbool.h>
+
 #include "lexerDef.h"
 
 bool alpha(char c);
@@ -10,12 +11,13 @@ bool id_letter(char c);
 bool id_num(char c);
 
 void print_unknown_pattern(int token_start, int current_ind, int line, char* buffer);
-void remove_comments(char* file_name); 
+void remove_comments(char* file_name);
 TokenType check_keyword(char* lexeme);
 void init_lexer(char* file_name);
 Token getNextToken();
 TokenArray init_token_array();
 void arr_push_token(TokenArray* ta, Token token);
+void arr_remove_comments(TokenArray* ta);
 Token create_token(int token_start, int token_end, TokenType type, int current_line);
 TokenArray get_tokens(char* file_name);
 

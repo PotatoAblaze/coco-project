@@ -45,6 +45,7 @@ int main(int argc, char** argv) {
 
             case 2: {
                 TokenArray ta = get_tokens(file_name);
+                arr_remove_comments(&ta);
                 for(int x = 0; x < ta.size; x++) {
                     if(ta.arr[x].type == TK_EOF) continue;
 
@@ -63,6 +64,7 @@ int main(int argc, char** argv) {
 
             case 3: {
                 TokenArray ta = get_tokens(file_name);
+                arr_remove_comments(&ta);
 
                 FirstAndFollowEntry entries[VAR_COUNT];
                 populate_first_and_follow(entries, GRAMMAR_SIZE, grammar);
@@ -71,7 +73,6 @@ int main(int argc, char** argv) {
                 compute_parse_table(pt, VAR_COUNT, entries, GRAMMAR_SIZE, grammar);
                 compute_synchronization_tokens(pt, entries);
 
-                int token_index = 0;
                 ParseTreeNode* root = generate_parse_tree(ta, pt, GRAMMAR_SIZE, grammar);
 
                 FILE* out_file = fopen(argv[2], "w");
@@ -99,6 +100,7 @@ int main(int argc, char** argv) {
 
                 // Lexer
                 TokenArray ta = get_tokens(file_name);
+                arr_remove_comments(&ta);
 
                 // Parser
                 FirstAndFollowEntry entries[VAR_COUNT];
@@ -108,7 +110,7 @@ int main(int argc, char** argv) {
                 compute_parse_table(pt, VAR_COUNT, entries, GRAMMAR_SIZE, grammar);
                 compute_synchronization_tokens(pt, entries);
 
-                ParseTreeNode* root = generate_parse_tree(ta, pt, GRAMMAR_SIZE, grammar);
+                generate_parse_tree(ta, pt, GRAMMAR_SIZE, grammar);
 
                 end_time = clock();
 

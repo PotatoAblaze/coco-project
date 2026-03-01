@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #define B_SIZE 512
 #define TOTAL_B_SIZE 1024
 
@@ -90,6 +91,17 @@ void arr_push_token(TokenArray* ta, Token token) {
     ta->size++;
 }
 
+void arr_remove_comments(TokenArray* ta) {
+    int size = ta->size;
+    int ind = 0;
+    for(int x = 0; x < size; x++) {
+        if(ta->arr[x].type != TK_COMMENT) {
+            ta->arr[ind++] = ta->arr[x];
+        }
+    }
+    ta->size = ind;
+}
+
 Token create_token(int token_start, int token_end, TokenType type, int current_line) {
     int len;
     if(token_end >= token_start)
@@ -108,7 +120,7 @@ Token create_token(int token_start, int token_end, TokenType type, int current_l
     }
 
     if(type == TK_ID && len > 20) {
-        printf("Line %d \tError: Variable Identifier is longer than the prescribed length of 20 characters.\n", current_line);
+        printf("Line %d Error: Variable Identifier is longer than the prescribed length of 20 characters.\n", current_line);
         type = TK_COMMENT;
     }
 
@@ -484,7 +496,7 @@ Token getNextToken() {
                     current_state = 0;
                 }
                 break;
-            
+
             case 34:
                 if(c == '&') {
                     generated_token = create_token(token_start, ind, TK_AND, line_number);

@@ -7,7 +7,7 @@
 TerminalArray init_terminal_array();
 void push_terminal_array(TerminalArray* array, TokenType term);
 void concatenate_terminal_arrays(TerminalArray* arr1, TerminalArray* arr2);
-
+void print_parse_tree_inorder(ParseTreeNode* node, int depth);
 void populate_first_and_follow(FirstAndFollowEntry entries[], int grammar_count, const GrammarRule rules[]);
 void compute_parse_table(ParseTable pt, int var_count, FirstAndFollowEntry entries[], int grammar_count, const GrammarRule rules[]);
 ParseTreeNode* generate_parse_tree(TokenArray tokens, ParseTable pt, int rules_count, const GrammarRule rules[]);

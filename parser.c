@@ -212,7 +212,7 @@ ParseTreeNode* generate_parse_tree(TokenArray tokens, ParseTable pt, int rules_c
     int token_index = 0;
     TermStack st = {0, 0, NULL};
 
-    term_stack_push(&st, create_new_tree_node(NULL, (Term){.is_terminal = true, .terminal_type = TK_EOF}));
+    // term_stack_push(&st, create_new_tree_node(NULL, (Term){.is_terminal = true, .terminal_type = TK_EOF}));
     if(token_count == 0) return term_stack_top(st);
     ParseTreeNode* root = create_new_tree_node(&tokens.arr[token_index], (Term){.is_terminal = false, .var = VAR_PROGRAM});
     term_stack_push(&st, root);
@@ -222,40 +222,53 @@ ParseTreeNode* generate_parse_tree(TokenArray tokens, ParseTable pt, int rules_c
         term_stack_pop(&st);
         Term top_term = top->term;
 
-        if(top_term.is_terminal && top_term.terminal_type == TK_EOF) {
-            if(tokens.arr[token_index].type != TK_EOF) {
-                // Error reached end of file too early
-            }
-            return root;
-        }
-
         if(top_term.is_terminal) {
             if(tokens.arr[token_index].type == top_term.terminal_type) {
                 top->token = &tokens.arr[token_index];
                 token_index++;
                 continue;
             } else {
-                // Terminal - Terminal mismatch error
+                printf("Line %d Error: The token %s for lexeme %s does not match with the expected token %s\n", tokens.arr[token_index].line_number,
+                       get_token_name(tokens.arr[token_index].type), tokens.arr[token_index].token, get_token_name(top_term.terminal_type));
+                continue;
             }
         } else {
             // Search all rules
             int rule_index = pt[top_term.var][tokens.arr[token_index].type];
-            if(rule_index == -1) {
-                // Non-Syn error
-            } else if(rule_index == -2) {
-                // Syn error
+            bool error_found = false;
+            while(token_index < token_count && rule_index == -1) {
+                if(!error_found) {
+                    printf("Line %d Error: Invalid token %s encountered with value %s ; stack top %s\n", tokens.arr[token_index].line_number,
+                           get_token_name(tokens.arr[token_index].type), tokens.arr[token_index].token, get_variable_name(top_term.var));
+                    error_found = true;
+                }
+                token_index++;
+                if(token_index < token_count) {
+                    rule_index = pt[top_term.var][tokens.arr[token_index].type];
+                }
             }
-            if(rules[rule_index].expansion == NULL) continue;
+            if(rule_index == -2) {
+                continue;
+            }
+            if(token_index >= token_count) continue;
+
+            if(rules[rule_index].expansion == NULL) {
+                top->child_count = 0;
+                continue;
+            }
             top->child_count = rules[rule_index].expansion_length;
-            for(int x = rules[rule_index].expansion_length; x >= 0; x--) {
+            top->token = &tokens.arr[token_index];
+            for(int x = rules[rule_index].expansion_length - 1; x >= 0; x--) {
                 ParseTreeNode* child = create_new_tree_node(NULL, rules[rule_index].expansion[x]);
                 term_stack_push(&st, child);
-                top->children[top->child_count - x - 1] = child;
+                top->children[x] = child;
             }
         }
     }
-
-    // Didn't empty stack
+    if(st.size > 0 && token_index >= token_count) {
+        printf("Error: Unexpected end of file. Parsing incomplete.\n");
+    }
+    return root;
 }
 
 void print_parse_tree_to_file(ParseTreeNode* node, ParseTreeNode* parent, int depth, FILE* file) {
@@ -292,6 +305,33 @@ void print_parse_tree_to_file(ParseTreeNode* node, ParseTreeNode* parent, int de
                 get_variable_name(node->term.var));
         for(int i = 1; i < node->child_count; i++) {
             print_parse_tree_to_file(node->children[i], node, depth + 1, file);
+        }
+    }
+}
+
+void print_parse_tree_inorder(ParseTreeNode* node, int depth) {
+    if(node == NULL) {
+        return;
+    }
+
+    // Print indentation
+    for(int i = 0; i < depth; i++) {
+        printf("  ");
+    }
+
+    // Print current node
+    if(node->term.is_terminal) {
+        printf("Terminal: %s", get_token_name(node->term.terminal_type));
+        if(node->token != NULL) {
+            printf(" (lexeme: \"%s\", line: %d)", node->token->token, node->token->line_number);
+        }
+        printf("\n");
+    } else {
+        printf("Non-Terminal: %s\n", get_variable_name(node->term.var));
+
+        // Recursively print children
+        for(int i = 0; i < node->child_count; i++) {
+            print_parse_tree_inorder(node->children[i], depth + 1);
         }
     }
 }
