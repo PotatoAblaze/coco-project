@@ -265,9 +265,6 @@ ParseTreeNode* generate_parse_tree(TokenArray tokens, ParseTable pt, int rules_c
             }
         }
     }
-    if(st.size > 0 && token_index >= token_count) {
-        printf("Error: Unexpected end of file. Parsing incomplete.\n");
-    }
     return root;
 }
 
@@ -350,6 +347,17 @@ void compute_synchronization_tokens(ParseTable pt, FirstAndFollowEntry entries[]
                 }
             }
         }
+        if(pt[x][TK_SEM] == -1) pt[x][TK_SEM] = -2;
+        if(pt[x][TK_SQR] == -1) pt[x][TK_SQR] = -2;
+        if(pt[x][TK_CL] == -1) pt[x][TK_CL] = -2;
+        if(pt[x][TK_OP] == -1) pt[x][TK_OP] = -2;
+        if(pt[x][TK_SQL] == -1) pt[x][TK_SQL] = -2;
+        if(pt[x][TK_END] == -1) pt[x][TK_END] = -2;
+        if(pt[x][TK_ENDWHILE] == -1) pt[x][TK_ENDWHILE] = -2;
+        if(pt[x][TK_ENDIF] == -1) pt[x][TK_ENDIF] = -2;
+        if(pt[x][TK_ENDRECORD] == -1) pt[x][TK_ENDRECORD] = -2;
+        if(pt[x][TK_ENDUNION] == -1) pt[x][TK_ENDUNION] = -2;
+        if(pt[x][TK_ELSE] == -1) pt[x][TK_ELSE] = -2;
     }
 }
 
