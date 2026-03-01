@@ -123,6 +123,7 @@ Token getNextToken() {
   bool token_ready = false;
 
   while (!is_eof && !token_ready) {
+    int old_ind = ind;
     char c = input_buffer[ind];
     if (c == '\0') {
       c = ' '; 
@@ -450,13 +451,18 @@ Token getNextToken() {
     }
 
     if (!is_eof) {
+      bool retracted = (ind!= old_ind);
       ind++;
       if (ind == B_SIZE) {
-        int r = fread(input_buffer + B_SIZE, 1, B_SIZE, fp);
-        if (r < B_SIZE) input_buffer[B_SIZE + r] = '\0';
+        if (!retracted) {
+            int r = fread(input_buffer + B_SIZE, 1, B_SIZE, fp);
+            if (r < B_SIZE) input_buffer[B_SIZE + r] = '\0';
+        }
       } else if (ind == TOTAL_B_SIZE) {
-        int r = fread(input_buffer, 1, B_SIZE, fp);
-        if (r < B_SIZE) input_buffer[r] = '\0';
+        if (!retracted) {
+            int r = fread(input_buffer, 1, B_SIZE, fp);
+            if (r < B_SIZE) input_buffer[r] = '\0';
+        }
         ind = 0;
       }
     }
