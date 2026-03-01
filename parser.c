@@ -236,10 +236,14 @@ ParseTreeNode* generate_parse_tree(TokenArray tokens, ParseTable pt, int rules_c
             // Search all rules
             int rule_index = pt[top_term.var][tokens.arr[token_index].type];
             bool error_found = false;
+
             while(token_index < token_count && rule_index == -1) {
                 if(!error_found) {
-                    printf("Line %d Error: Invalid token %s encountered with value %s ; stack top %s\n", tokens.arr[token_index].line_number,
-                           get_token_name(tokens.arr[token_index].type), tokens.arr[token_index].token, get_variable_name(top_term.var));
+                    printf("Line %d Error: Invalid token %s encountered with value %s stack top %s\n", 
+                           tokens.arr[token_index].line_number,
+                           get_token_name(tokens.arr[token_index].type), 
+                           tokens.arr[token_index].token, 
+                           get_variable_name(top_term.var));
                     error_found = true;
                 }
                 token_index++;
@@ -247,15 +251,28 @@ ParseTreeNode* generate_parse_tree(TokenArray tokens, ParseTable pt, int rules_c
                     rule_index = pt[top_term.var][tokens.arr[token_index].type];
                 }
             }
+
             if(rule_index == -2) {
+                if(!error_found) {
+                    printf("Line %d Error: Invalid token %s encountered with value %s stack top %s\n", 
+                           tokens.arr[token_index].line_number,
+                           get_token_name(tokens.arr[token_index].type), 
+                           tokens.arr[token_index].token, 
+                           get_variable_name(top_term.var));
+                }
                 continue;
             }
+
             if(token_index >= token_count) continue;
+            if(error_found) {
+                continue;
+            }
 
             if(rules[rule_index].expansion == NULL) {
                 top->child_count = 0;
                 continue;
             }
+            
             top->child_count = rules[rule_index].expansion_length;
             top->token = &tokens.arr[token_index];
             for(int x = rules[rule_index].expansion_length - 1; x >= 0; x--) {
@@ -339,25 +356,11 @@ void compute_synchronization_tokens(ParseTable pt, FirstAndFollowEntry entries[]
         TerminalSet follow_set = entries[x].follow;
         for(int y = 0; y < TK_COUNT; y++) {
             if(set_contains(follow_set, y)) {
-                // In panic mode recovery, if the table entry is empty,
-                // we place a synchronization token (represented by -2)
-                // based on the FOLLOW set of the variable.
                 if(pt[x][y] == -1) {
                     pt[x][y] = -2;
                 }
             }
         }
-        if(pt[x][TK_SEM] == -1) pt[x][TK_SEM] = -2;
-        if(pt[x][TK_SQR] == -1) pt[x][TK_SQR] = -2;
-        if(pt[x][TK_CL] == -1) pt[x][TK_CL] = -2;
-        if(pt[x][TK_OP] == -1) pt[x][TK_OP] = -2;
-        if(pt[x][TK_SQL] == -1) pt[x][TK_SQL] = -2;
-        if(pt[x][TK_END] == -1) pt[x][TK_END] = -2;
-        if(pt[x][TK_ENDWHILE] == -1) pt[x][TK_ENDWHILE] = -2;
-        if(pt[x][TK_ENDIF] == -1) pt[x][TK_ENDIF] = -2;
-        if(pt[x][TK_ENDRECORD] == -1) pt[x][TK_ENDRECORD] = -2;
-        if(pt[x][TK_ENDUNION] == -1) pt[x][TK_ENDUNION] = -2;
-        if(pt[x][TK_ELSE] == -1) pt[x][TK_ELSE] = -2;
     }
 }
 
@@ -366,11 +369,9 @@ void panic_mode_recovery(int token_count, TokenArray tokens, int* token_index, P
     if(*token_index >= token_count) {
         return;
     }
-    // If the expected symbol is a terminal, just report the error and move forward
     if(curr_term.is_terminal) {
         printf("Line %d Error: The token %s for lexeme %s does not match with the expected token %s\n", tokens.arr[*token_index].line_number,
                get_token_name(tokens.arr[*token_index].type), tokens.arr[*token_index].token, get_token_name(curr_term.terminal_type));
-        // Do NOT consume the current token - assume the expected terminal was missing
         return;
     }
 
