@@ -212,7 +212,6 @@ ParseTreeNode* generate_parse_tree(TokenArray tokens, ParseTable pt, int rules_c
     int token_index = 0;
     TermStack st = {0, 0, NULL};
 
-    // term_stack_push(&st, create_new_tree_node(NULL, (Term){.is_terminal = true, .terminal_type = TK_EOF}));
     if(token_count == 0) return term_stack_top(st);
     ParseTreeNode* root = create_new_tree_node(&tokens.arr[token_index], (Term){.is_terminal = false, .var = VAR_PROGRAM});
     term_stack_push(&st, root);
@@ -233,7 +232,6 @@ ParseTreeNode* generate_parse_tree(TokenArray tokens, ParseTable pt, int rules_c
                 continue;
             }
         } else {
-            // Search all rules
             int rule_index = pt[top_term.var][tokens.arr[token_index].type];
             bool error_found = false;
 
@@ -264,9 +262,6 @@ ParseTreeNode* generate_parse_tree(TokenArray tokens, ParseTable pt, int rules_c
             }
 
             if(token_index >= token_count) continue;
-            if(error_found) {
-                continue;
-            }
 
             if(rules[rule_index].expansion == NULL) {
                 top->child_count = 0;
@@ -328,12 +323,10 @@ void print_parse_tree_inorder(ParseTreeNode* node, int depth) {
         return;
     }
 
-    // Print indentation
     for(int i = 0; i < depth; i++) {
         printf("  ");
     }
 
-    // Print current node
     if(node->term.is_terminal) {
         printf("Terminal: %s", get_token_name(node->term.terminal_type));
         if(node->token != NULL) {
@@ -343,14 +336,12 @@ void print_parse_tree_inorder(ParseTreeNode* node, int depth) {
     } else {
         printf("Non-Terminal: %s\n", get_variable_name(node->term.var));
 
-        // Recursively print children
         for(int i = 0; i < node->child_count; i++) {
             print_parse_tree_inorder(node->children[i], depth + 1);
         }
     }
 }
 
-// compute synchronization tokens here
 void compute_synchronization_tokens(ParseTable pt, FirstAndFollowEntry entries[]) {
     for(int x = 0; x < VAR_COUNT; x++) {
         TerminalSet follow_set = entries[x].follow;
@@ -361,10 +352,21 @@ void compute_synchronization_tokens(ParseTable pt, FirstAndFollowEntry entries[]
                 }
             }
         }
+
+        if(pt[x][TK_SEM]       == -1) pt[x][TK_SEM]       = -2;
+        if(pt[x][TK_SQR]       == -1) pt[x][TK_SQR]       = -2;
+        if(pt[x][TK_CL]        == -1) pt[x][TK_CL]        = -2;
+        if(pt[x][TK_OP]        == -1) pt[x][TK_OP]        = -2;
+        if(pt[x][TK_SQL]       == -1) pt[x][TK_SQL]       = -2;
+        if(pt[x][TK_END]       == -1) pt[x][TK_END]       = -2;
+        if(pt[x][TK_ENDWHILE]  == -1) pt[x][TK_ENDWHILE]  = -2;
+        if(pt[x][TK_ENDIF]     == -1) pt[x][TK_ENDIF]     = -2;
+        if(pt[x][TK_ENDRECORD] == -1) pt[x][TK_ENDRECORD] = -2;
+        if(pt[x][TK_ENDUNION]  == -1) pt[x][TK_ENDUNION]  = -2;
+        if(pt[x][TK_ELSE]      == -1) pt[x][TK_ELSE]      = -2;
     }
 }
 
-// panic mode error recovery procedure
 void panic_mode_recovery(int token_count, TokenArray tokens, int* token_index, ParseTable pt, Term curr_term) {
     if(*token_index >= token_count) {
         return;
@@ -375,7 +377,6 @@ void panic_mode_recovery(int token_count, TokenArray tokens, int* token_index, P
         return;
     }
 
-    // Non-terminal case: scan forward until we find a token in FIRST or FOLLOW (sync token)
     printf("Line %d Error: Invalid token %s encountered with value %s stack top %s\n", tokens.arr[*token_index].line_number,
            get_token_name(tokens.arr[*token_index].type), tokens.arr[*token_index].token, get_variable_name(curr_term.var));
 
@@ -386,7 +387,6 @@ void panic_mode_recovery(int token_count, TokenArray tokens, int* token_index, P
             break;
         }
 
-        // Skip comments during recovery
         if(curr_token_type == TK_COMMENT) {
             (*token_index)++;
             continue;
@@ -394,7 +394,6 @@ void panic_mode_recovery(int token_count, TokenArray tokens, int* token_index, P
 
         int table_entry = pt[curr_term.var][curr_token_type];
 
-        // If we find a valid rule (>= 0) or a sync token (-2), stop discarding
         if(table_entry != -1) {
             break;
         }
@@ -406,13 +405,10 @@ void panic_mode_recovery(int token_count, TokenArray tokens, int* token_index, P
 void test_first_computation() {
     printf("\n=== TESTING FIRST TABLE COMPUTATION ===\n\n");
 
-    // Initialize first and follow table
     FirstAndFollowEntry entries[VAR_COUNT];
 
-    // Populate the first and follow sets
     populate_first_and_follow(entries, GRAMMAR_SIZE, grammar);
 
-    // Print FIRST sets for all variables
     printf("FIRST SETS:\n");
     printf("%-30s | FIRST Set\n", "Non-Terminal");
     printf("------------------------------------------------------------\n");
