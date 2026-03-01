@@ -25,5 +25,8 @@ parser.o: parser.c parser.h parserDef.h lexer.h
 run: $(TARGET)
 	./$(TARGET) $(INPUT) $(OUTPUT)
 
+debug: $(TARGET)
+	gdb --args ./$(TARGET) $(INPUT) $(OUTPUT)
+
 clean:
 	rm -f $(OBJS) $(TARGET)

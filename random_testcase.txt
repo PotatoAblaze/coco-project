@@ -1,0 +1,138 @@
+% ============================================================================
+% Complex Test Program for BITS PILANI 2026 Custom Language Compiler
+% All type definitions and declarations strictly inside functions!
+% Includes Lexical and Syntax Errors for testing Panic Mode Recovery
+% ============================================================================
+
+% ----------------------------------------------------------------------------
+% Function 1: Computes metrics and defines global types
+% ----------------------------------------------------------------------------
+_calculateMetrics input parameter list [int b2c3, real c4d5] output parameter list [real d2, int b5];
+    
+    % --- <typeDefinitions> MUST go first inside the function ---
+    % Valid record definition (available globally once defined here)
+    record #book
+        type int: edition;
+        type real: price;
+    endrecord
+
+    % Lexical Error 1: Invalid Record Identifier
+    record #Book1
+        type int: val;
+    endrecord
+
+    union #student
+        type int: rollno;
+        type real: marks;
+        type int: age;
+    endunion
+
+    definetype union #student as #newstudent
+    
+    % --- <declarations> go next ---
+    % Valid global declaration (declared inside function, but globally visible)
+    type int: c2d3: global;
+    
+    % Lexical Error 2: Identifier exceeds 20 characters
+    type int: b2cdbcdbcdbcdbcdbcdbcdbcd77;
+    
+    % Syntax Error 1: Missing colon after dataType
+    type real d3cd;
+    
+    type int: b3;
+    
+    % --- <otherStmts> go after declarations ---
+    b3 <--- 10;
+    
+    % Lexical Error 3: Invalid real number format (must have exactly 2 digits after decimal)
+    d3cd <--- c4d5 + 23.5;
+    
+    b5 <--- b2c3 * 2;
+    d2 <--- d3cd / 3.00;
+    
+    % Syntax Error 2: Missing semicolon at the end of the statement
+    b3 <--- b3 + 1
+    
+    % --- <returnStmt> is strictly last ---
+    return [d2, b5];
+end
+
+% ----------------------------------------------------------------------------
+% Function 2: Processes data with control flow
+% ----------------------------------------------------------------------------
+_processData input parameter list [int c2] output parameter list [int d4];
+    
+    % <typeDefinitions> is empty here (Epsilon)
+    
+    % --- <declarations> ---
+    type int: b3;
+    type int: c4;
+    
+    % --- <otherStmts> ---
+    b3 <--- 0;
+    c4 <--- c2;
+    
+    % Syntax Error 3: Missing parentheses around boolean expression
+    while c4 >= 0
+        b3 <--- b3 + 1;
+        
+        % Lexical Error 4: Unknown symbol '^'
+        c4 <--- c4 - 1 ^ 2;
+    endwhile
+    
+    % Syntax Error 4: Missing 'then' keyword
+    if (b3 == 10)
+        write(b3);
+    else
+        b3 <--- 0;
+    endif
+    
+    % Lexical Error 5: Invalid logical AND operator (should be &&&)
+    if (b3 > 5 && c4 == 0) then
+        write(c4);
+    endif
+
+    d4 <--- b3;
+    
+    % --- <returnStmt> ---
+    return [d4];
+end
+
+% ----------------------------------------------------------------------------
+% Main Driver Function
+% ----------------------------------------------------------------------------
+_main
+    % <typeDefinitions> is empty here
+    
+    % --- <declarations> ---
+    type record #book: b2book;
+    type record #book: c2book;
+    type union #student: d2stu;
+    
+    type int: b2val;
+    type real: c3val;
+    type int: d4val;
+    
+    % --- <otherStmts> ---
+    % Syntax Error 5: Missing opening parenthesis in IO statement
+    read b2val);
+    read(c3val);
+    
+    % Valid field accesses
+    b2book.edition <--- 1;
+    b2book.price <--- 300.50;
+    
+    c2book.edition <--- 2;
+    c2book.price <--- 450.75;
+    
+    % Valid function calls
+    [c3val, d4val] <--- call _calculateMetrics with parameters [b2val, c3val];
+    [d4val] <--- call _processData with parameters [d4val];
+    
+    d2stu.tagvalue <--- 1;
+    d2stu.rollno <--- d4val;
+    write(d2stu.rollno);
+    
+    % --- <returnStmt> ---
+    return;
+end

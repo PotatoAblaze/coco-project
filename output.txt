@@ -1,301 +1,681 @@
-Non-Terminal: PROGRAM
-  Non-Terminal: OTHER_FUNCTIONS
-    Non-Terminal: FUNCTION
-      Terminal: TK_FUNID (lexeme: "_computeFunctionValue", line: 6)
-      Non-Terminal: INPUT_PAR
-        Terminal: TK_INPUT (lexeme: "input", line: 6)
-        Terminal: TK_PARAMETER (lexeme: "parameter", line: 6)
-        Terminal: TK_LIST (lexeme: "list", line: 6)
-        Terminal: TK_SQL (lexeme: "[", line: 6)
-        Non-Terminal: PARAMETER_LIST
-          Non-Terminal: DATA_TYPE
-            Non-Terminal: PRIMITIVE_DATATYPE
-              Terminal: TK_INT (lexeme: "int", line: 6)
-          Terminal: TK_ID (lexeme: "c3", line: 6)
-          Non-Terminal: REMAINING_LIST
-            Terminal: TK_COMMA (lexeme: ",", line: 6)
-            Non-Terminal: PARAMETER_LIST
-              Non-Terminal: DATA_TYPE
-                Non-Terminal: PRIMITIVE_DATATYPE
-                  Terminal: TK_INT (lexeme: "int", line: 6)
-              Terminal: TK_ID (lexeme: "c4", line: 6)
-              Non-Terminal: REMAINING_LIST
-                Terminal: TK_COMMA (lexeme: ",", line: 6)
-                Non-Terminal: PARAMETER_LIST
-                  Non-Terminal: DATA_TYPE
-                    Non-Terminal: PRIMITIVE_DATATYPE
-                      Terminal: TK_INT (lexeme: "int", line: 6)
-                  Terminal: TK_ID (lexeme: "c5", line: 6)
-                  Non-Terminal: REMAINING_LIST
-        Terminal: TK_SQR (lexeme: "]", line: 6)
-      Non-Terminal: OUTPUT_PAR
-        Terminal: TK_OUTPUT (lexeme: "output", line: 7)
-        Terminal: TK_PARAMETER (lexeme: "parameter", line: 7)
-        Terminal: TK_LIST
-        Terminal: TK_SQL (lexeme: "[", line: 7)
-        Non-Terminal: PARAMETER_LIST
-          Non-Terminal: DATA_TYPE
-            Non-Terminal: PRIMITIVE_DATATYPE
-              Terminal: TK_REAL (lexeme: "real", line: 7)
-          Terminal: TK_ID (lexeme: "c6", line: 7)
-          Non-Terminal: REMAINING_LIST
-        Terminal: TK_SQR (lexeme: "]", line: 7)
-      Terminal: TK_SEM (lexeme: ";", line: 7)
-      Non-Terminal: STMTS
-        Non-Terminal: TYPE_DEFINITIONS
-        Non-Terminal: DECLARATIONS
-          Non-Terminal: DECLARATION
-            Terminal: TK_TYPE (lexeme: "type", line: 8)
-            Non-Terminal: DATA_TYPE
-              Non-Terminal: PRIMITIVE_DATATYPE
-                Terminal: TK_REAL (lexeme: "real", line: 8)
-            Terminal: TK_COLON (lexeme: ":", line: 8)
-            Terminal: TK_ID (lexeme: "d4cbcccccccccccccbbbbbbbbdddd5222222222222633333333333377", line: 8)
-            Non-Terminal: GLOBAL_OR_NOT
-            Terminal: TK_SEM (lexeme: ";", line: 8)
-          Non-Terminal: DECLARATIONS
-            Non-Terminal: DECLARATION
-              Terminal: TK_TYPE (lexeme: "type", line: 9)
-              Non-Terminal: DATA_TYPE
-                Non-Terminal: PRIMITIVE_DATATYPE
-                  Terminal: TK_REAL (lexeme: "real", line: 9)
-              Terminal: TK_COLON (lexeme: ":", line: 9)
-              Terminal: TK_ID (lexeme: "c4bbb", line: 9)
-              Non-Terminal: GLOBAL_OR_NOT
-              Terminal: TK_SEM (lexeme: ";", line: 9)
-            Non-Terminal: DECLARATIONS
-        Non-Terminal: OTHER_STMTS
-          Non-Terminal: STMT
-            Non-Terminal: ASSIGNMENT_STMT
-              Non-Terminal: SINGLE_OR_REC_ID
-                Terminal: TK_ID (lexeme: "c6", line: 10)
-                Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-              Terminal: TK_ASSIGNOP (lexeme: "<---", line: 10)
-              Non-Terminal: ARITHMETIC_EXPRESSION
-              Terminal: TK_SEM (lexeme: ";", line: 10)
-          Non-Terminal: OTHER_STMTS
-            Non-Terminal: STMT
-              Non-Terminal: ASSIGNMENT_STMT
-                Non-Terminal: SINGLE_OR_REC_ID
-                  Terminal: TK_ID (lexeme: "d4cbcd5677", line: 11)
-                  Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-                Terminal: TK_ASSIGNOP (lexeme: "<---", line: 11)
-                Non-Terminal: ARITHMETIC_EXPRESSION
-                  Non-Terminal: TERM
-                    Non-Terminal: FACTOR
-                      Terminal: TK_OP (lexeme: "(", line: 11)
-                      Non-Terminal: ARITHMETIC_EXPRESSION
-                        Non-Terminal: TERM
-                          Non-Terminal: FACTOR
-                            Terminal: TK_OP (lexeme: "(", line: 11)
-                            Non-Terminal: ARITHMETIC_EXPRESSION
-                              Non-Terminal: TERM
-                                Non-Terminal: FACTOR
-                                  Non-Terminal: VAR
-                                    Non-Terminal: SINGLE_OR_REC_ID
-                                      Terminal: TK_ID (lexeme: "c3", line: 11)
-                                      Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-                                Non-Terminal: TERM_PRIME
-                              Non-Terminal: EXP_PRIME
-                                Non-Terminal: LOW_PRECEDENCE_OPERATORS
-                                  Terminal: TK_PLUS (lexeme: "+", line: 11)
-                                Non-Terminal: TERM
-                                  Non-Terminal: FACTOR
-                                    Non-Terminal: VAR
-                                      Terminal: TK_NUM (lexeme: "2", line: 11)
-                                  Non-Terminal: TERM_PRIME
-                                    Non-Terminal: HIGH_PRECEDENCE_OPERATORS
-                                      Terminal: TK_MUL (lexeme: "*", line: 11)
-                                    Non-Terminal: FACTOR
-                                      Non-Terminal: VAR
-                                        Non-Terminal: SINGLE_OR_REC_ID
-                                          Terminal: TK_ID (lexeme: "c4", line: 11)
-                                          Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-                                    Non-Terminal: TERM_PRIME
-                                Non-Terminal: EXP_PRIME
-                                  Non-Terminal: LOW_PRECEDENCE_OPERATORS
-                                    Terminal: TK_MINUS (lexeme: "-", line: 11)
-                                  Non-Terminal: TERM
-                                    Non-Terminal: FACTOR
-                                      Terminal: TK_OP (lexeme: "(", line: 11)
-                                      Non-Terminal: ARITHMETIC_EXPRESSION
-                                        Non-Terminal: TERM
-                                          Non-Terminal: FACTOR
-                                            Non-Terminal: VAR
-                                              Non-Terminal: SINGLE_OR_REC_ID
-                                                Terminal: TK_ID (lexeme: "c5", line: 11)
-                                                Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-                                          Non-Terminal: TERM_PRIME
-                                        Non-Terminal: EXP_PRIME
-                                          Non-Terminal: LOW_PRECEDENCE_OPERATORS
-                                            Terminal: TK_MINUS (lexeme: "-", line: 11)
-                                          Non-Terminal: TERM
-                                            Non-Terminal: FACTOR
-                                              Non-Terminal: VAR
-                                                Terminal: TK_NUM (lexeme: "5", line: 11)
-                                            Non-Terminal: TERM_PRIME
-                                          Non-Terminal: EXP_PRIME
-                                      Terminal: TK_CL (lexeme: ")", line: 11)
-                                    Non-Terminal: TERM_PRIME
-                                  Non-Terminal: EXP_PRIME
-                            Terminal: TK_CL (lexeme: ")", line: 11)
-                          Non-Terminal: TERM_PRIME
-                            Non-Terminal: HIGH_PRECEDENCE_OPERATORS
-                              Terminal: TK_DIV (lexeme: "/", line: 11)
-                            Non-Terminal: FACTOR
-                              Non-Terminal: VAR
-                                Terminal: TK_NUM (lexeme: "4", line: 11)
-                            Non-Terminal: TERM_PRIME
-                        Non-Terminal: EXP_PRIME
-                      Terminal: TK_CL
-                    Non-Terminal: TERM_PRIME
-                  Non-Terminal: EXP_PRIME
-                Terminal: TK_SEM (lexeme: ";", line: 11)
-            Non-Terminal: OTHER_STMTS
-              Non-Terminal: STMT
-                Non-Terminal: ASSIGNMENT_STMT
-                  Non-Terminal: SINGLE_OR_REC_ID
-                    Terminal: TK_ID (lexeme: "c4bbb", line: 12)
-                    Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-                  Terminal: TK_ASSIGNOP (lexeme: "<---", line: 12)
-                  Non-Terminal: ARITHMETIC_EXPRESSION
-                    Non-Terminal: TERM
-                      Non-Terminal: FACTOR
-                        Terminal: TK_OP (lexeme: "(", line: 12)
-                        Non-Terminal: ARITHMETIC_EXPRESSION
-                          Non-Terminal: TERM
-                            Non-Terminal: FACTOR
-                              Terminal: TK_OP (lexeme: "(", line: 12)
-                              Non-Terminal: ARITHMETIC_EXPRESSION
-                                Non-Terminal: TERM
-                                  Non-Terminal: FACTOR
-                                    Non-Terminal: VAR
-                                      Non-Terminal: SINGLE_OR_REC_ID
-                                        Terminal: TK_ID (lexeme: "d4cbcd5677", line: 12)
-                                        Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-                                  Non-Terminal: TERM_PRIME
-                                Non-Terminal: EXP_PRIME
-                                  Non-Terminal: LOW_PRECEDENCE_OPERATORS
-                                    Terminal: TK_MINUS (lexeme: "-", line: 12)
-                                  Non-Terminal: TERM
-                                    Non-Terminal: FACTOR
-                                      Non-Terminal: VAR
-                                        Terminal: TK_RNUM (lexeme: "2.35", line: 12)
-                                    Non-Terminal: TERM_PRIME
-                                  Non-Terminal: EXP_PRIME
-                              Terminal: TK_CL (lexeme: ")", line: 12)
-                            Non-Terminal: TERM_PRIME
-                              Non-Terminal: HIGH_PRECEDENCE_OPERATORS
-                                Terminal: TK_MUL (lexeme: "*", line: 12)
-                              Non-Terminal: FACTOR
-                                Terminal: TK_OP (lexeme: "(", line: 12)
-                                Non-Terminal: ARITHMETIC_EXPRESSION
-                                  Non-Terminal: TERM
-                                    Non-Terminal: FACTOR
-                                      Non-Terminal: VAR
-                                        Terminal: TK_NUM (lexeme: "2345", line: 12)
-                                    Non-Terminal: TERM_PRIME
-                                  Non-Terminal: EXP_PRIME
-                                    Non-Terminal: LOW_PRECEDENCE_OPERATORS
-                                      Terminal: TK_MINUS (lexeme: "-", line: 12)
-                                    Non-Terminal: TERM
-                                      Non-Terminal: FACTOR
-                                        Non-Terminal: VAR
-                                          Terminal: TK_NUM (lexeme: "234", line: 12)
-                                      Non-Terminal: TERM_PRIME
-                                        Non-Terminal: HIGH_PRECEDENCE_OPERATORS
-                                          Terminal: TK_MUL (lexeme: "*", line: 12)
-                                        Non-Terminal: FACTOR
-                                          Non-Terminal: VAR
-                                            Terminal: TK_NUM (lexeme: "8", line: 12)
-                                        Non-Terminal: TERM_PRIME
-                                    Non-Terminal: EXP_PRIME
-                                Terminal: TK_CL (lexeme: ")", line: 12)
-                              Non-Terminal: TERM_PRIME
-                          Non-Terminal: EXP_PRIME
-                        Terminal: TK_CL (lexeme: ")", line: 12)
-                      Non-Terminal: TERM_PRIME
-                    Non-Terminal: EXP_PRIME
-                      Non-Terminal: LOW_PRECEDENCE_OPERATORS
-                        Terminal: TK_PLUS (lexeme: "+", line: 12)
-                      Non-Terminal: TERM
-                        Non-Terminal: FACTOR
-                          Non-Terminal: VAR
-                            Terminal: TK_NUM (lexeme: "5", line: 12)
-                        Non-Terminal: TERM_PRIME
-                          Non-Terminal: HIGH_PRECEDENCE_OPERATORS
-                            Terminal: TK_MUL (lexeme: "*", line: 12)
-                          Non-Terminal: FACTOR
-                            Non-Terminal: VAR
-                              Non-Terminal: SINGLE_OR_REC_ID
-                                Terminal: TK_ID (lexeme: "c3", line: 12)
-                                Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-                          Non-Terminal: TERM_PRIME
-                      Non-Terminal: EXP_PRIME
-                  Terminal: TK_SEM (lexeme: ";", line: 12)
-              Non-Terminal: OTHER_STMTS
-                Non-Terminal: STMT
-                  Non-Terminal: CONDITIONAL_STMT
-                    Terminal: TK_IF (lexeme: "if", line: 13)
-                    Terminal: TK_OP (lexeme: "(", line: 13)
-                    Non-Terminal: BOOLEAN_EXPRESSION
-                      Terminal: TK_OP (lexeme: "(", line: 13)
-                      Non-Terminal: BOOLEAN_EXPRESSION
-                        Terminal: TK_NOT (lexeme: "~", line: 13)
-                        Terminal: TK_OP (lexeme: "(", line: 13)
-                        Non-Terminal: BOOLEAN_EXPRESSION
-                          Non-Terminal: VAR
-                            Non-Terminal: SINGLE_OR_REC_ID
-                              Terminal: TK_ID (lexeme: "c4bbb", line: 13)
-                              Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-                          Non-Terminal: RELATIONAL_OP
-                            Terminal: TK_EQ (lexeme: "==", line: 13)
-                          Non-Terminal: VAR
-                            Terminal: TK_NUM (lexeme: "0", line: 13)
-                        Terminal: TK_CL (lexeme: ")", line: 13)
-                      Terminal: TK_CL (lexeme: ")", line: 13)
-                      Non-Terminal: LOGICAL_OP
-                      Terminal: TK_OP (lexeme: "(", line: 13)
-                      Non-Terminal: BOOLEAN_EXPRESSION
-                        Non-Terminal: VAR
-                          Non-Terminal: SINGLE_OR_REC_ID
-                            Terminal: TK_ID (lexeme: "c4bbb", line: 13)
-                            Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-                        Non-Terminal: RELATIONAL_OP
-                          Terminal: TK_GT (lexeme: ">", line: 13)
-                        Non-Terminal: VAR
-                          Terminal: TK_RNUM (lexeme: "78.56", line: 13)
-                      Terminal: TK_CL (lexeme: ")", line: 13)
-                    Terminal: TK_CL (lexeme: ")", line: 13)
-                    Terminal: TK_THEN (lexeme: "then", line: 14)
-                    Non-Terminal: STMT
-                      Non-Terminal: ASSIGNMENT_STMT
-                        Non-Terminal: SINGLE_OR_REC_ID
-                          Terminal: TK_ID (lexeme: "c6", line: 15)
-                          Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-                        Terminal: TK_ASSIGNOP (lexeme: "<---", line: 15)
-                        Non-Terminal: ARITHMETIC_EXPRESSION
-                          Non-Terminal: TERM
-                            Non-Terminal: FACTOR
-                              Non-Terminal: VAR
-                                Non-Terminal: SINGLE_OR_REC_ID
-                                  Terminal: TK_ID (lexeme: "d4cbcd5677", line: 15)
-                                  Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-                            Non-Terminal: TERM_PRIME
-                              Non-Terminal: HIGH_PRECEDENCE_OPERATORS
-                                Terminal: TK_DIV (lexeme: "/", line: 15)
-                              Non-Terminal: FACTOR
-                                Non-Terminal: VAR
-                                  Non-Terminal: SINGLE_OR_REC_ID
-                                    Terminal: TK_ID (lexeme: "c4bbb", line: 15)
-                                    Non-Terminal: OPTION_SINGLE_CONSTRUCTED
-                              Non-Terminal: TERM_PRIME
-                          Non-Terminal: EXP_PRIME
-                        Terminal: TK_SEM
-                    Non-Terminal: OTHER_STMTS
-                    Non-Terminal: ELSE_PART
-                      Terminal: TK_ENDIF (lexeme: "endif", line: 18)
-                Non-Terminal: OTHER_STMTS
-        Non-Terminal: RETURN_STMT
-      Terminal: TK_END
-    Non-Terminal: OTHER_FUNCTIONS
+lexemeCurrentNode        lineno   tokenName                valueIfNumber    parentNodeSymbol         isLeaf   NodeSymbol              
+------------------------ -------- ------------------------ ---------------- ------------------------ -------- ------------------------
+_calculateMetrics        10       TK_FUNID                 ~~~~             FUNCTION                 yes      TK_FUNID                
+~~~~                     99       ~~~~                     ~~~~             OTHER_FUNCTIONS          no       FUNCTION                
+input                    10       TK_INPUT                 ~~~~             INPUT_PAR                yes      TK_INPUT                
+~~~~                     10       ~~~~                     ~~~~             FUNCTION                 no       INPUT_PAR               
+parameter                10       TK_PARAMETER             ~~~~             INPUT_PAR                yes      TK_PARAMETER            
+list                     10       TK_LIST                  ~~~~             INPUT_PAR                yes      TK_LIST                 
+[                        10       TK_SQL                   ~~~~             INPUT_PAR                yes      TK_SQL                  
+int                      10       TK_INT                   ~~~~             PRIMITIVE_DATATYPE       yes      TK_INT                  
+~~~~                     10       ~~~~                     ~~~~             DATA_TYPE                no       PRIMITIVE_DATATYPE      
+~~~~                     10       ~~~~                     ~~~~             PARAMETER_LIST           no       DATA_TYPE               
+~~~~                     10       ~~~~                     ~~~~             INPUT_PAR                no       PARAMETER_LIST          
+b2c3                     10       TK_ID                    ~~~~             PARAMETER_LIST           yes      TK_ID                   
+,                        10       TK_COMMA                 ~~~~             REMAINING_LIST           yes      TK_COMMA                
+~~~~                     10       ~~~~                     ~~~~             PARAMETER_LIST           no       REMAINING_LIST          
+real                     10       TK_REAL                  ~~~~             PRIMITIVE_DATATYPE       yes      TK_REAL                 
+~~~~                     10       ~~~~                     ~~~~             DATA_TYPE                no       PRIMITIVE_DATATYPE      
+~~~~                     10       ~~~~                     ~~~~             PARAMETER_LIST           no       DATA_TYPE               
+~~~~                     10       ~~~~                     ~~~~             REMAINING_LIST           no       PARAMETER_LIST          
+c4d5                     10       TK_ID                    ~~~~             PARAMETER_LIST           yes      TK_ID                   
+]                        10       TK_SQR                   ~~~~             INPUT_PAR                yes      TK_SQR                  
+output                   10       TK_OUTPUT                ~~~~             OUTPUT_PAR               yes      TK_OUTPUT               
+~~~~                     10       ~~~~                     ~~~~             FUNCTION                 no       OUTPUT_PAR              
+parameter                10       TK_PARAMETER             ~~~~             OUTPUT_PAR               yes      TK_PARAMETER            
+list                     10       TK_LIST                  ~~~~             OUTPUT_PAR               yes      TK_LIST                 
+[                        10       TK_SQL                   ~~~~             OUTPUT_PAR               yes      TK_SQL                  
+real                     10       TK_REAL                  ~~~~             PRIMITIVE_DATATYPE       yes      TK_REAL                 
+~~~~                     10       ~~~~                     ~~~~             DATA_TYPE                no       PRIMITIVE_DATATYPE      
+~~~~                     10       ~~~~                     ~~~~             PARAMETER_LIST           no       DATA_TYPE               
+~~~~                     10       ~~~~                     ~~~~             OUTPUT_PAR               no       PARAMETER_LIST          
+d2                       10       TK_ID                    ~~~~             PARAMETER_LIST           yes      TK_ID                   
+,                        10       TK_COMMA                 ~~~~             REMAINING_LIST           yes      TK_COMMA                
+~~~~                     10       ~~~~                     ~~~~             PARAMETER_LIST           no       REMAINING_LIST          
+int                      10       TK_INT                   ~~~~             PRIMITIVE_DATATYPE       yes      TK_INT                  
+~~~~                     10       ~~~~                     ~~~~             DATA_TYPE                no       PRIMITIVE_DATATYPE      
+~~~~                     10       ~~~~                     ~~~~             PARAMETER_LIST           no       DATA_TYPE               
+~~~~                     10       ~~~~                     ~~~~             REMAINING_LIST           no       PARAMETER_LIST          
+b5                       10       TK_ID                    ~~~~             PARAMETER_LIST           yes      TK_ID                   
+]                        10       TK_SQR                   ~~~~             OUTPUT_PAR               yes      TK_SQR                  
+;                        10       TK_SEM                   ~~~~             FUNCTION                 yes      TK_SEM                  
+record                   14       TK_RECORD                ~~~~             TYPE_DEFINITION          yes      TK_RECORD               
+~~~~                     17       ~~~~                     ~~~~             ACTUAL_OR_REDEFINED      no       TYPE_DEFINITION         
+#book                    14       TK_RUID                  ~~~~             TYPE_DEFINITION          yes      TK_RUID                 
+type                     15       TK_TYPE                  ~~~~             FIELD_DEFINITION         yes      TK_TYPE                 
+~~~~                     15       ~~~~                     ~~~~             FIELD_DEFINITIONS        no       FIELD_DEFINITION        
+int                      15       TK_INT                   ~~~~             PRIMITIVE_DATATYPE       yes      TK_INT                  
+~~~~                     15       ~~~~                     ~~~~             FIELD_TYPE               no       PRIMITIVE_DATATYPE      
+~~~~                     15       ~~~~                     ~~~~             FIELD_DEFINITION         no       FIELD_TYPE              
+:                        15       TK_COLON                 ~~~~             FIELD_DEFINITION         yes      TK_COLON                
+edition                  15       TK_FIELDID               ~~~~             FIELD_DEFINITION         yes      TK_FIELDID              
+;                        15       TK_SEM                   ~~~~             FIELD_DEFINITION         yes      TK_SEM                  
+~~~~                     17       ~~~~                     ~~~~             TYPE_DEFINITION          no       FIELD_DEFINITIONS       
+type                     16       TK_TYPE                  ~~~~             FIELD_DEFINITION         yes      TK_TYPE                 
+~~~~                     16       ~~~~                     ~~~~             FIELD_DEFINITIONS        no       FIELD_DEFINITION        
+real                     16       TK_REAL                  ~~~~             PRIMITIVE_DATATYPE       yes      TK_REAL                 
+~~~~                     16       ~~~~                     ~~~~             FIELD_TYPE               no       PRIMITIVE_DATATYPE      
+~~~~                     16       ~~~~                     ~~~~             FIELD_DEFINITION         no       FIELD_TYPE              
+:                        16       TK_COLON                 ~~~~             FIELD_DEFINITION         yes      TK_COLON                
+price                    16       TK_FIELDID               ~~~~             FIELD_DEFINITION         yes      TK_FIELDID              
+;                        16       TK_SEM                   ~~~~             FIELD_DEFINITION         yes      TK_SEM                  
+endrecord                17       TK_ENDRECORD             ~~~~             TYPE_DEFINITION          yes      TK_ENDRECORD            
+~~~~                     14       ~~~~                     ~~~~             TYPE_DEFINITIONS         no       ACTUAL_OR_REDEFINED     
+~~~~                     19       ~~~~                     ~~~~             STMTS                    no       TYPE_DEFINITIONS        
+record                   20       TK_RECORD                ~~~~             TYPE_DEFINITION          yes      TK_RECORD               
+~~~~                     22       ~~~~                     ~~~~             ACTUAL_OR_REDEFINED      no       TYPE_DEFINITION         
+type                     21       TK_TYPE                  ~~~~             FIELD_DEFINITION         yes      TK_TYPE                 
+~~~~                     21       ~~~~                     ~~~~             FIELD_DEFINITIONS        no       FIELD_DEFINITION        
+int                      21       TK_INT                   ~~~~             PRIMITIVE_DATATYPE       yes      TK_INT                  
+~~~~                     21       ~~~~                     ~~~~             FIELD_TYPE               no       PRIMITIVE_DATATYPE      
+~~~~                     21       ~~~~                     ~~~~             FIELD_DEFINITION         no       FIELD_TYPE              
+:                        21       TK_COLON                 ~~~~             FIELD_DEFINITION         yes      TK_COLON                
+val                      21       TK_FIELDID               ~~~~             FIELD_DEFINITION         yes      TK_FIELDID              
+;                        21       TK_SEM                   ~~~~             FIELD_DEFINITION         yes      TK_SEM                  
+~~~~                     22       ~~~~                     ~~~~             TYPE_DEFINITION          no       FIELD_DEFINITIONS       
+endrecord                22       TK_ENDRECORD             ~~~~             TYPE_DEFINITION          yes      TK_ENDRECORD            
+~~~~                     20       ~~~~                     ~~~~             TYPE_DEFINITIONS         no       ACTUAL_OR_REDEFINED     
+~~~~                     24       ~~~~                     ~~~~             TYPE_DEFINITIONS         no       TYPE_DEFINITIONS        
+union                    24       TK_UNION                 ~~~~             TYPE_DEFINITION          yes      TK_UNION                
+~~~~                     28       ~~~~                     ~~~~             ACTUAL_OR_REDEFINED      no       TYPE_DEFINITION         
+#student                 24       TK_RUID                  ~~~~             TYPE_DEFINITION          yes      TK_RUID                 
+type                     25       TK_TYPE                  ~~~~             FIELD_DEFINITION         yes      TK_TYPE                 
+~~~~                     25       ~~~~                     ~~~~             FIELD_DEFINITIONS        no       FIELD_DEFINITION        
+int                      25       TK_INT                   ~~~~             PRIMITIVE_DATATYPE       yes      TK_INT                  
+~~~~                     25       ~~~~                     ~~~~             FIELD_TYPE               no       PRIMITIVE_DATATYPE      
+~~~~                     25       ~~~~                     ~~~~             FIELD_DEFINITION         no       FIELD_TYPE              
+:                        25       TK_COLON                 ~~~~             FIELD_DEFINITION         yes      TK_COLON                
+rollno                   25       TK_FIELDID               ~~~~             FIELD_DEFINITION         yes      TK_FIELDID              
+;                        25       TK_SEM                   ~~~~             FIELD_DEFINITION         yes      TK_SEM                  
+~~~~                     27       ~~~~                     ~~~~             TYPE_DEFINITION          no       FIELD_DEFINITIONS       
+type                     26       TK_TYPE                  ~~~~             FIELD_DEFINITION         yes      TK_TYPE                 
+~~~~                     26       ~~~~                     ~~~~             FIELD_DEFINITIONS        no       FIELD_DEFINITION        
+real                     26       TK_REAL                  ~~~~             PRIMITIVE_DATATYPE       yes      TK_REAL                 
+~~~~                     26       ~~~~                     ~~~~             FIELD_TYPE               no       PRIMITIVE_DATATYPE      
+~~~~                     26       ~~~~                     ~~~~             FIELD_DEFINITION         no       FIELD_TYPE              
+:                        26       TK_COLON                 ~~~~             FIELD_DEFINITION         yes      TK_COLON                
+marks                    26       TK_FIELDID               ~~~~             FIELD_DEFINITION         yes      TK_FIELDID              
+;                        26       TK_SEM                   ~~~~             FIELD_DEFINITION         yes      TK_SEM                  
+type                     27       TK_TYPE                  ~~~~             FIELD_DEFINITION         yes      TK_TYPE                 
+~~~~                     27       ~~~~                     ~~~~             MORE_FIELDS              no       FIELD_DEFINITION        
+int                      27       TK_INT                   ~~~~             PRIMITIVE_DATATYPE       yes      TK_INT                  
+~~~~                     27       ~~~~                     ~~~~             FIELD_TYPE               no       PRIMITIVE_DATATYPE      
+~~~~                     27       ~~~~                     ~~~~             FIELD_DEFINITION         no       FIELD_TYPE              
+:                        27       TK_COLON                 ~~~~             FIELD_DEFINITION         yes      TK_COLON                
+age                      27       TK_FIELDID               ~~~~             FIELD_DEFINITION         yes      TK_FIELDID              
+;                        27       TK_SEM                   ~~~~             FIELD_DEFINITION         yes      TK_SEM                  
+~~~~                     28       ~~~~                     ~~~~             FIELD_DEFINITIONS        no       MORE_FIELDS             
+endunion                 28       TK_ENDUNION              ~~~~             TYPE_DEFINITION          yes      TK_ENDUNION             
+~~~~                     24       ~~~~                     ~~~~             TYPE_DEFINITIONS         no       ACTUAL_OR_REDEFINED     
+~~~~                     30       ~~~~                     ~~~~             TYPE_DEFINITIONS         no       TYPE_DEFINITIONS        
+definetype               30       TK_DEFINETYPE            ~~~~             DEFINETYPESTMT           yes      TK_DEFINETYPE           
+~~~~                     30       ~~~~                     ~~~~             ACTUAL_OR_REDEFINED      no       DEFINETYPESTMT          
+union                    30       TK_UNION                 ~~~~             A                        yes      TK_UNION                
+~~~~                     30       ~~~~                     ~~~~             DEFINETYPESTMT           no       A                       
+#student                 30       TK_RUID                  ~~~~             DEFINETYPESTMT           yes      TK_RUID                 
+as                       30       TK_AS                    ~~~~             DEFINETYPESTMT           yes      TK_AS                   
+#newstudent              30       TK_RUID                  ~~~~             DEFINETYPESTMT           yes      TK_RUID                 
+~~~~                     30       ~~~~                     ~~~~             TYPE_DEFINITIONS         no       ACTUAL_OR_REDEFINED     
+~~~~                     32       ~~~~                     ~~~~             TYPE_DEFINITIONS         no       TYPE_DEFINITIONS        
+~~~~                     98       ~~~~                     ~~~~             FUNCTION                 no       STMTS                   
+type                     34       TK_TYPE                  ~~~~             DECLARATION              yes      TK_TYPE                 
+~~~~                     34       ~~~~                     ~~~~             DECLARATIONS             no       DECLARATION             
+int                      34       TK_INT                   ~~~~             PRIMITIVE_DATATYPE       yes      TK_INT                  
+~~~~                     34       ~~~~                     ~~~~             DATA_TYPE                no       PRIMITIVE_DATATYPE      
+~~~~                     34       ~~~~                     ~~~~             DECLARATION              no       DATA_TYPE               
+:                        34       TK_COLON                 ~~~~             DECLARATION              yes      TK_COLON                
+c2d3                     34       TK_ID                    ~~~~             DECLARATION              yes      TK_ID                   
+:                        34       TK_COLON                 ~~~~             GLOBAL_OR_NOT            yes      TK_COLON                
+~~~~                     34       ~~~~                     ~~~~             DECLARATION              no       GLOBAL_OR_NOT           
+global                   34       TK_GLOBAL                ~~~~             GLOBAL_OR_NOT            yes      TK_GLOBAL               
+;                        34       TK_SEM                   ~~~~             DECLARATION              yes      TK_SEM                  
+~~~~                     36       ~~~~                     ~~~~             STMTS                    no       DECLARATIONS            
+type                     37       TK_TYPE                  ~~~~             DECLARATION              yes      TK_TYPE                 
+~~~~                     37       ~~~~                     ~~~~             DECLARATIONS             no       DECLARATION             
+int                      37       TK_INT                   ~~~~             PRIMITIVE_DATATYPE       yes      TK_INT                  
+~~~~                     37       ~~~~                     ~~~~             DATA_TYPE                no       PRIMITIVE_DATATYPE      
+~~~~                     37       ~~~~                     ~~~~             DECLARATION              no       DATA_TYPE               
+:                        37       TK_COLON                 ~~~~             DECLARATION              yes      TK_COLON                
+;                        37       TK_SEM                   ~~~~             DECLARATION              yes      TK_SEM                  
+~~~~                     39       ~~~~                     ~~~~             DECLARATIONS             no       DECLARATIONS            
+type                     40       TK_TYPE                  ~~~~             DECLARATION              yes      TK_TYPE                 
+~~~~                     40       ~~~~                     ~~~~             DECLARATIONS             no       DECLARATION             
+real                     40       TK_REAL                  ~~~~             PRIMITIVE_DATATYPE       yes      TK_REAL                 
+~~~~                     40       ~~~~                     ~~~~             DATA_TYPE                no       PRIMITIVE_DATATYPE      
+~~~~                     40       ~~~~                     ~~~~             DECLARATION              no       DATA_TYPE               
+d3cd                     40       TK_ID                    ~~~~             DECLARATION              yes      TK_ID                   
+;                        40       TK_SEM                   ~~~~             DECLARATION              yes      TK_SEM                  
+~~~~                     42       ~~~~                     ~~~~             DECLARATIONS             no       DECLARATIONS            
+type                     42       TK_TYPE                  ~~~~             DECLARATION              yes      TK_TYPE                 
+~~~~                     42       ~~~~                     ~~~~             DECLARATIONS             no       DECLARATION             
+int                      42       TK_INT                   ~~~~             PRIMITIVE_DATATYPE       yes      TK_INT                  
+~~~~                     42       ~~~~                     ~~~~             DATA_TYPE                no       PRIMITIVE_DATATYPE      
+~~~~                     42       ~~~~                     ~~~~             DECLARATION              no       DATA_TYPE               
+:                        42       TK_COLON                 ~~~~             DECLARATION              yes      TK_COLON                
+b3                       42       TK_ID                    ~~~~             DECLARATION              yes      TK_ID                   
+;                        42       TK_SEM                   ~~~~             DECLARATION              yes      TK_SEM                  
+~~~~                     44       ~~~~                     ~~~~             DECLARATIONS             no       DECLARATIONS            
+b3                       45       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     45       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     45       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     45       TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+10                       45       TK_NUM                   10               VAR                      yes      TK_NUM                  
+~~~~                     45       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     45       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     45       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     45       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        45       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     45       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     47       ~~~~                     ~~~~             STMTS                    no       OTHER_STMTS             
+d3cd                     48       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     48       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     48       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     48       TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+c4d5                     48       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     48       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     48       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     48       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     48       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     48       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
++                        48       TK_PLUS                  ~~~~             LOW_PRECEDENCE_OPERATORS yes      TK_PLUS                 
+~~~~                     48       ~~~~                     ~~~~             EXP_PRIME                no       LOW_PRECEDENCE_OPERATORS
+~~~~                     48       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       EXP_PRIME               
+;                        48       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     48       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     50       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+b5                       50       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     50       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     50       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     50       TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+b2c3                     50       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     50       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     50       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     50       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     50       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+*                        50       TK_MUL                   ~~~~             HIGH_PRECEDENCE_OPERATORS yes      TK_MUL                  
+~~~~                     50       ~~~~                     ~~~~             TERM_PRIME               no       HIGH_PRECEDENCE_OPERATORS
+~~~~                     50       ~~~~                     ~~~~             TERM                     no       TERM_PRIME              
+2                        50       TK_NUM                   2                VAR                      yes      TK_NUM                  
+~~~~                     50       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     50       ~~~~                     ~~~~             TERM_PRIME               no       FACTOR                  
+~~~~                     50       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        50       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     50       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     51       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+d2                       51       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     51       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     51       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     51       TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+d3cd                     51       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     51       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     51       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     51       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     51       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+/                        51       TK_DIV                   ~~~~             HIGH_PRECEDENCE_OPERATORS yes      TK_DIV                  
+~~~~                     51       ~~~~                     ~~~~             TERM_PRIME               no       HIGH_PRECEDENCE_OPERATORS
+~~~~                     51       ~~~~                     ~~~~             TERM                     no       TERM_PRIME              
+3.00                     51       TK_RNUM                  3.00             VAR                      yes      TK_RNUM                 
+~~~~                     51       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     51       ~~~~                     ~~~~             TERM_PRIME               no       FACTOR                  
+~~~~                     51       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        51       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     51       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     53       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+b3                       54       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     54       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     57       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     54       TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+b3                       54       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     54       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     54       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     54       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     54       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     54       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
++                        54       TK_PLUS                  ~~~~             LOW_PRECEDENCE_OPERATORS yes      TK_PLUS                 
+~~~~                     54       ~~~~                     ~~~~             EXP_PRIME                no       LOW_PRECEDENCE_OPERATORS
+~~~~                     57       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       EXP_PRIME               
+1                        54       TK_NUM                   1                VAR                      yes      TK_NUM                  
+~~~~                     54       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     54       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     56       ~~~~                     ~~~~             EXP_PRIME                no       TERM                    
+;                        57       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     54       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     58       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+[                        63       TK_SQL                   ~~~~             OUTPUT_PARAMETERS        yes      TK_SQL                  
+~~~~                     63       ~~~~                     ~~~~             FUN_CALL_STMT            no       OUTPUT_PARAMETERS       
+c2                       63       TK_ID                    ~~~~             ID_LIST                  yes      TK_ID                   
+~~~~                     63       ~~~~                     ~~~~             OUTPUT_PARAMETERS        no       ID_LIST                 
+]                        63       TK_SQR                   ~~~~             OUTPUT_PARAMETERS        yes      TK_SQR                  
+~~~~                     63       ~~~~                     ~~~~             STMT                     no       FUN_CALL_STMT           
+[                        63       TK_SQL                   ~~~~             INPUT_PARAMETERS         yes      TK_SQL                  
+~~~~                     63       ~~~~                     ~~~~             FUN_CALL_STMT            no       INPUT_PARAMETERS        
+d4                       63       TK_ID                    ~~~~             ID_LIST                  yes      TK_ID                   
+~~~~                     63       ~~~~                     ~~~~             INPUT_PARAMETERS         no       ID_LIST                 
+]                        63       TK_SQR                   ~~~~             INPUT_PARAMETERS         yes      TK_SQR                  
+;                        63       TK_SEM                   ~~~~             FUN_CALL_STMT            yes      TK_SEM                  
+~~~~                     63       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     65       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+b3                       68       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     68       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     68       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+;                        68       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     68       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     69       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+c4                       69       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     69       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     69       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+;                        69       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     69       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     71       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+b3                       72       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     72       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     72       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     72       TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+0                        72       TK_NUM                   0                VAR                      yes      TK_NUM                  
+~~~~                     72       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     72       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     72       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     72       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        72       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     72       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     73       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+c4                       73       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     73       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     73       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     73       TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+c2                       73       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     73       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     73       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     73       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     73       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     73       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        73       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     73       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     75       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+while                    76       TK_WHILE                 ~~~~             ITERATIVE_STMT           yes      TK_WHILE                
+~~~~                     81       ~~~~                     ~~~~             STMT                     no       ITERATIVE_STMT          
+c4                       76       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     76       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     76       ~~~~                     ~~~~             BOOLEAN_EXPRESSION       no       VAR                     
+~~~~                     76       ~~~~                     ~~~~             ITERATIVE_STMT           no       BOOLEAN_EXPRESSION      
+>=                       76       TK_GE                    ~~~~             RELATIONAL_OP            yes      TK_GE                   
+~~~~                     76       ~~~~                     ~~~~             BOOLEAN_EXPRESSION       no       RELATIONAL_OP           
+0                        76       TK_NUM                   0                VAR                      yes      TK_NUM                  
+~~~~                     76       ~~~~                     ~~~~             BOOLEAN_EXPRESSION       no       VAR                     
+b3                       77       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     77       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     77       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     77       TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+b3                       77       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     77       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     77       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     77       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     77       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     77       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
++                        77       TK_PLUS                  ~~~~             LOW_PRECEDENCE_OPERATORS yes      TK_PLUS                 
+~~~~                     77       ~~~~                     ~~~~             EXP_PRIME                no       LOW_PRECEDENCE_OPERATORS
+~~~~                     77       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       EXP_PRIME               
+1                        77       TK_NUM                   1                VAR                      yes      TK_NUM                  
+~~~~                     77       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     77       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     77       ~~~~                     ~~~~             EXP_PRIME                no       TERM                    
+;                        77       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     77       ~~~~                     ~~~~             ITERATIVE_STMT           no       STMT                    
+c4                       80       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     80       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     80       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     80       TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+c4                       80       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     80       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     80       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     80       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     80       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     80       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+-                        80       TK_MINUS                 ~~~~             LOW_PRECEDENCE_OPERATORS yes      TK_MINUS                
+~~~~                     80       ~~~~                     ~~~~             EXP_PRIME                no       LOW_PRECEDENCE_OPERATORS
+~~~~                     80       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       EXP_PRIME               
+1                        80       TK_NUM                   1                VAR                      yes      TK_NUM                  
+~~~~                     80       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     80       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     80       ~~~~                     ~~~~             EXP_PRIME                no       TERM                    
+;                        80       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     80       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     81       ~~~~                     ~~~~             ITERATIVE_STMT           no       OTHER_STMTS             
+endwhile                 81       TK_ENDWHILE              ~~~~             ITERATIVE_STMT           yes      TK_ENDWHILE             
+~~~~                     76       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     83       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+if                       84       TK_IF                    ~~~~             CONDITIONAL_STMT         yes      TK_IF                   
+~~~~                     86       ~~~~                     ~~~~             STMT                     no       CONDITIONAL_STMT        
+(                        84       TK_OP                    ~~~~             CONDITIONAL_STMT         yes      TK_OP                   
+b3                       84       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     84       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     84       ~~~~                     ~~~~             BOOLEAN_EXPRESSION       no       VAR                     
+~~~~                     84       ~~~~                     ~~~~             CONDITIONAL_STMT         no       BOOLEAN_EXPRESSION      
+==                       84       TK_EQ                    ~~~~             RELATIONAL_OP            yes      TK_EQ                   
+~~~~                     84       ~~~~                     ~~~~             BOOLEAN_EXPRESSION       no       RELATIONAL_OP           
+10                       84       TK_NUM                   10               VAR                      yes      TK_NUM                  
+~~~~                     84       ~~~~                     ~~~~             BOOLEAN_EXPRESSION       no       VAR                     
+)                        84       TK_CL                    ~~~~             CONDITIONAL_STMT         yes      TK_CL                   
+write                    85       TK_WRITE                 ~~~~             IO_STMT                  yes      TK_WRITE                
+~~~~                     85       ~~~~                     ~~~~             STMT                     no       IO_STMT                 
+(                        85       TK_OP                    ~~~~             IO_STMT                  yes      TK_OP                   
+b3                       85       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     85       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     85       ~~~~                     ~~~~             IO_STMT                  no       VAR                     
+)                        85       TK_CL                    ~~~~             IO_STMT                  yes      TK_CL                   
+;                        85       TK_SEM                   ~~~~             IO_STMT                  yes      TK_SEM                  
+~~~~                     85       ~~~~                     ~~~~             CONDITIONAL_STMT         no       STMT                    
+else                     86       TK_ELSE                  ~~~~             ELSE_PART                yes      TK_ELSE                 
+~~~~                     88       ~~~~                     ~~~~             CONDITIONAL_STMT         no       ELSE_PART               
+b3                       87       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     87       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     87       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     87       TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+0                        87       TK_NUM                   0                VAR                      yes      TK_NUM                  
+~~~~                     87       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     87       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     87       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     87       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        87       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     87       ~~~~                     ~~~~             ELSE_PART                no       STMT                    
+endif                    88       TK_ENDIF                 ~~~~             ELSE_PART                yes      TK_ENDIF                
+~~~~                     84       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     90       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+if                       91       TK_IF                    ~~~~             CONDITIONAL_STMT         yes      TK_IF                   
+~~~~                     93       ~~~~                     ~~~~             STMT                     no       CONDITIONAL_STMT        
+(                        91       TK_OP                    ~~~~             CONDITIONAL_STMT         yes      TK_OP                   
+b3                       91       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     91       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     91       ~~~~                     ~~~~             BOOLEAN_EXPRESSION       no       VAR                     
+~~~~                     91       ~~~~                     ~~~~             CONDITIONAL_STMT         no       BOOLEAN_EXPRESSION      
+>                        91       TK_GT                    ~~~~             RELATIONAL_OP            yes      TK_GT                   
+~~~~                     91       ~~~~                     ~~~~             BOOLEAN_EXPRESSION       no       RELATIONAL_OP           
+5                        91       TK_NUM                   5                VAR                      yes      TK_NUM                  
+~~~~                     91       ~~~~                     ~~~~             BOOLEAN_EXPRESSION       no       VAR                     
+c4                       91       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     91       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     91       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+0                        91       TK_NUM                   0                VAR                      yes      TK_NUM                  
+~~~~                     91       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     91       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     91       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     91       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+~~~~                     91       ~~~~                     ~~~~             CONDITIONAL_STMT         no       STMT                    
+write                    92       TK_WRITE                 ~~~~             IO_STMT                  yes      TK_WRITE                
+~~~~                     92       ~~~~                     ~~~~             STMT                     no       IO_STMT                 
+(                        92       TK_OP                    ~~~~             IO_STMT                  yes      TK_OP                   
+c4                       92       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     92       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     92       ~~~~                     ~~~~             IO_STMT                  no       VAR                     
+)                        92       TK_CL                    ~~~~             IO_STMT                  yes      TK_CL                   
+;                        92       TK_SEM                   ~~~~             IO_STMT                  yes      TK_SEM                  
+~~~~                     92       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     93       ~~~~                     ~~~~             CONDITIONAL_STMT         no       OTHER_STMTS             
+endif                    93       TK_ENDIF                 ~~~~             ELSE_PART                yes      TK_ENDIF                
+~~~~                     93       ~~~~                     ~~~~             CONDITIONAL_STMT         no       ELSE_PART               
+~~~~                     91       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     95       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+d4                       95       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     95       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+~~~~                     95       ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     95       TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+b3                       95       TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     95       ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     95       ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     95       ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     95       ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     95       ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        95       TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     95       ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     97       ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+return                   98       TK_RETURN                ~~~~             RETURN_STMT              yes      TK_RETURN               
+~~~~                     98       ~~~~                     ~~~~             STMTS                    no       RETURN_STMT             
+[                        98       TK_SQL                   ~~~~             OPTIONAL_RETURN          yes      TK_SQL                  
+~~~~                     98       ~~~~                     ~~~~             RETURN_STMT              no       OPTIONAL_RETURN         
+d4                       98       TK_ID                    ~~~~             ID_LIST                  yes      TK_ID                   
+~~~~                     98       ~~~~                     ~~~~             OPTIONAL_RETURN          no       ID_LIST                 
+]                        98       TK_SQR                   ~~~~             OPTIONAL_RETURN          yes      TK_SQR                  
+;                        98       TK_SEM                   ~~~~             RETURN_STMT              yes      TK_SEM                  
+end                      99       TK_END                   ~~~~             FUNCTION                 yes      TK_END                  
+~~~~                     101      ~~~~                     ~~~~             PROGRAM                  no       OTHER_FUNCTIONS         
+~~~~                     104      ~~~~                     ~~~~             ROOT                     no       PROGRAM                 
+_main                    104      TK_MAIN                  ~~~~             MAIN_FUNCTION            yes      TK_MAIN                 
+~~~~                     138      ~~~~                     ~~~~             PROGRAM                  no       MAIN_FUNCTION           
+~~~~                     137      ~~~~                     ~~~~             MAIN_FUNCTION            no       STMTS                   
+type                     108      TK_TYPE                  ~~~~             DECLARATION              yes      TK_TYPE                 
+~~~~                     108      ~~~~                     ~~~~             DECLARATIONS             no       DECLARATION             
+record                   108      TK_RECORD                ~~~~             CONSTRUCTED_DATATYPE     yes      TK_RECORD               
+~~~~                     108      ~~~~                     ~~~~             DATA_TYPE                no       CONSTRUCTED_DATATYPE    
+#book                    108      TK_RUID                  ~~~~             CONSTRUCTED_DATATYPE     yes      TK_RUID                 
+~~~~                     108      ~~~~                     ~~~~             DECLARATION              no       DATA_TYPE               
+:                        108      TK_COLON                 ~~~~             DECLARATION              yes      TK_COLON                
+b2b                      108      TK_ID                    ~~~~             DECLARATION              yes      TK_ID                   
+;                        108      TK_SEM                   ~~~~             DECLARATION              yes      TK_SEM                  
+~~~~                     109      ~~~~                     ~~~~             STMTS                    no       DECLARATIONS            
+type                     109      TK_TYPE                  ~~~~             DECLARATION              yes      TK_TYPE                 
+~~~~                     109      ~~~~                     ~~~~             DECLARATIONS             no       DECLARATION             
+record                   109      TK_RECORD                ~~~~             CONSTRUCTED_DATATYPE     yes      TK_RECORD               
+~~~~                     109      ~~~~                     ~~~~             DATA_TYPE                no       CONSTRUCTED_DATATYPE    
+#book                    109      TK_RUID                  ~~~~             CONSTRUCTED_DATATYPE     yes      TK_RUID                 
+~~~~                     109      ~~~~                     ~~~~             DECLARATION              no       DATA_TYPE               
+:                        109      TK_COLON                 ~~~~             DECLARATION              yes      TK_COLON                
+c2b                      109      TK_ID                    ~~~~             DECLARATION              yes      TK_ID                   
+;                        109      TK_SEM                   ~~~~             DECLARATION              yes      TK_SEM                  
+~~~~                     110      ~~~~                     ~~~~             DECLARATIONS             no       DECLARATIONS            
+type                     110      TK_TYPE                  ~~~~             DECLARATION              yes      TK_TYPE                 
+~~~~                     110      ~~~~                     ~~~~             DECLARATIONS             no       DECLARATION             
+union                    110      TK_UNION                 ~~~~             CONSTRUCTED_DATATYPE     yes      TK_UNION                
+~~~~                     110      ~~~~                     ~~~~             DATA_TYPE                no       CONSTRUCTED_DATATYPE    
+#student                 110      TK_RUID                  ~~~~             CONSTRUCTED_DATATYPE     yes      TK_RUID                 
+~~~~                     110      ~~~~                     ~~~~             DECLARATION              no       DATA_TYPE               
+:                        110      TK_COLON                 ~~~~             DECLARATION              yes      TK_COLON                
+d2                       110      TK_ID                    ~~~~             DECLARATION              yes      TK_ID                   
+;                        110      TK_SEM                   ~~~~             DECLARATION              yes      TK_SEM                  
+~~~~                     112      ~~~~                     ~~~~             DECLARATIONS             no       DECLARATIONS            
+type                     112      TK_TYPE                  ~~~~             DECLARATION              yes      TK_TYPE                 
+~~~~                     112      ~~~~                     ~~~~             DECLARATIONS             no       DECLARATION             
+int                      112      TK_INT                   ~~~~             PRIMITIVE_DATATYPE       yes      TK_INT                  
+~~~~                     112      ~~~~                     ~~~~             DATA_TYPE                no       PRIMITIVE_DATATYPE      
+~~~~                     112      ~~~~                     ~~~~             DECLARATION              no       DATA_TYPE               
+:                        112      TK_COLON                 ~~~~             DECLARATION              yes      TK_COLON                
+b2                       112      TK_ID                    ~~~~             DECLARATION              yes      TK_ID                   
+;                        112      TK_SEM                   ~~~~             DECLARATION              yes      TK_SEM                  
+~~~~                     113      ~~~~                     ~~~~             DECLARATIONS             no       DECLARATIONS            
+type                     113      TK_TYPE                  ~~~~             DECLARATION              yes      TK_TYPE                 
+~~~~                     113      ~~~~                     ~~~~             DECLARATIONS             no       DECLARATION             
+real                     113      TK_REAL                  ~~~~             PRIMITIVE_DATATYPE       yes      TK_REAL                 
+~~~~                     113      ~~~~                     ~~~~             DATA_TYPE                no       PRIMITIVE_DATATYPE      
+~~~~                     113      ~~~~                     ~~~~             DECLARATION              no       DATA_TYPE               
+:                        113      TK_COLON                 ~~~~             DECLARATION              yes      TK_COLON                
+c3                       113      TK_ID                    ~~~~             DECLARATION              yes      TK_ID                   
+;                        113      TK_SEM                   ~~~~             DECLARATION              yes      TK_SEM                  
+~~~~                     114      ~~~~                     ~~~~             DECLARATIONS             no       DECLARATIONS            
+type                     114      TK_TYPE                  ~~~~             DECLARATION              yes      TK_TYPE                 
+~~~~                     114      ~~~~                     ~~~~             DECLARATIONS             no       DECLARATION             
+int                      114      TK_INT                   ~~~~             PRIMITIVE_DATATYPE       yes      TK_INT                  
+~~~~                     114      ~~~~                     ~~~~             DATA_TYPE                no       PRIMITIVE_DATATYPE      
+~~~~                     114      ~~~~                     ~~~~             DECLARATION              no       DATA_TYPE               
+:                        114      TK_COLON                 ~~~~             DECLARATION              yes      TK_COLON                
+d4                       114      TK_ID                    ~~~~             DECLARATION              yes      TK_ID                   
+;                        114      TK_SEM                   ~~~~             DECLARATION              yes      TK_SEM                  
+~~~~                     116      ~~~~                     ~~~~             DECLARATIONS             no       DECLARATIONS            
+read                     118      TK_READ                  ~~~~             IO_STMT                  yes      TK_READ                 
+~~~~                     118      ~~~~                     ~~~~             STMT                     no       IO_STMT                 
+b2                       118      TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     118      ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     118      ~~~~                     ~~~~             IO_STMT                  no       VAR                     
+)                        118      TK_CL                    ~~~~             IO_STMT                  yes      TK_CL                   
+;                        118      TK_SEM                   ~~~~             IO_STMT                  yes      TK_SEM                  
+~~~~                     118      ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     119      ~~~~                     ~~~~             STMTS                    no       OTHER_STMTS             
+read                     119      TK_READ                  ~~~~             IO_STMT                  yes      TK_READ                 
+~~~~                     119      ~~~~                     ~~~~             STMT                     no       IO_STMT                 
+(                        119      TK_OP                    ~~~~             IO_STMT                  yes      TK_OP                   
+c3                       119      TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     119      ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     119      ~~~~                     ~~~~             IO_STMT                  no       VAR                     
+)                        119      TK_CL                    ~~~~             IO_STMT                  yes      TK_CL                   
+;                        119      TK_SEM                   ~~~~             IO_STMT                  yes      TK_SEM                  
+~~~~                     119      ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     121      ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+b2b                      122      TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     122      ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+.                        122      TK_DOT                   ~~~~             ONE_EXPANSION            yes      TK_DOT                  
+~~~~                     122      ~~~~                     ~~~~             OPTION_SINGLE_CONSTRUCTED no       ONE_EXPANSION           
+edition                  122      TK_FIELDID               ~~~~             ONE_EXPANSION            yes      TK_FIELDID              
+~~~~                     122      ~~~~                     ~~~~             SINGLE_OR_REC_ID         no       OPTION_SINGLE_CONSTRUCTED
+~~~~                     122      ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     122      TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+1                        122      TK_NUM                   1                VAR                      yes      TK_NUM                  
+~~~~                     122      ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     122      ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     122      ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     122      ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        122      TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     122      ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     123      ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+b2b                      123      TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     123      ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+.                        123      TK_DOT                   ~~~~             ONE_EXPANSION            yes      TK_DOT                  
+~~~~                     123      ~~~~                     ~~~~             OPTION_SINGLE_CONSTRUCTED no       ONE_EXPANSION           
+price                    123      TK_FIELDID               ~~~~             ONE_EXPANSION            yes      TK_FIELDID              
+~~~~                     123      ~~~~                     ~~~~             SINGLE_OR_REC_ID         no       OPTION_SINGLE_CONSTRUCTED
+~~~~                     123      ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     123      TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+300.50                   123      TK_RNUM                  300.50           VAR                      yes      TK_RNUM                 
+~~~~                     123      ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     123      ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     123      ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     123      ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        123      TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     123      ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     125      ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+c2b                      125      TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     125      ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+.                        125      TK_DOT                   ~~~~             ONE_EXPANSION            yes      TK_DOT                  
+~~~~                     125      ~~~~                     ~~~~             OPTION_SINGLE_CONSTRUCTED no       ONE_EXPANSION           
+edition                  125      TK_FIELDID               ~~~~             ONE_EXPANSION            yes      TK_FIELDID              
+~~~~                     125      ~~~~                     ~~~~             SINGLE_OR_REC_ID         no       OPTION_SINGLE_CONSTRUCTED
+~~~~                     125      ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     125      TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+2                        125      TK_NUM                   2                VAR                      yes      TK_NUM                  
+~~~~                     125      ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     125      ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     125      ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     125      ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        125      TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     125      ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     126      ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+c2b                      126      TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     126      ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+.                        126      TK_DOT                   ~~~~             ONE_EXPANSION            yes      TK_DOT                  
+~~~~                     126      ~~~~                     ~~~~             OPTION_SINGLE_CONSTRUCTED no       ONE_EXPANSION           
+price                    126      TK_FIELDID               ~~~~             ONE_EXPANSION            yes      TK_FIELDID              
+~~~~                     126      ~~~~                     ~~~~             SINGLE_OR_REC_ID         no       OPTION_SINGLE_CONSTRUCTED
+~~~~                     126      ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     126      TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+450.75                   126      TK_RNUM                  450.75           VAR                      yes      TK_RNUM                 
+~~~~                     126      ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     126      ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     126      ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     126      ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        126      TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     126      ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     128      ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+[                        129      TK_SQL                   ~~~~             OUTPUT_PARAMETERS        yes      TK_SQL                  
+~~~~                     129      ~~~~                     ~~~~             FUN_CALL_STMT            no       OUTPUT_PARAMETERS       
+c3                       129      TK_ID                    ~~~~             ID_LIST                  yes      TK_ID                   
+~~~~                     129      ~~~~                     ~~~~             OUTPUT_PARAMETERS        no       ID_LIST                 
+,                        129      TK_COMMA                 ~~~~             MORE_IDS                 yes      TK_COMMA                
+~~~~                     129      ~~~~                     ~~~~             ID_LIST                  no       MORE_IDS                
+d4                       129      TK_ID                    ~~~~             ID_LIST                  yes      TK_ID                   
+~~~~                     129      ~~~~                     ~~~~             MORE_IDS                 no       ID_LIST                 
+]                        129      TK_SQR                   ~~~~             OUTPUT_PARAMETERS        yes      TK_SQR                  
+<---                     129      TK_ASSIGNOP              ~~~~             OUTPUT_PARAMETERS        yes      TK_ASSIGNOP             
+~~~~                     129      ~~~~                     ~~~~             STMT                     no       FUN_CALL_STMT           
+call                     129      TK_CALL                  ~~~~             FUN_CALL_STMT            yes      TK_CALL                 
+_calculateMetrics        129      TK_FUNID                 ~~~~             FUN_CALL_STMT            yes      TK_FUNID                
+with                     129      TK_WITH                  ~~~~             FUN_CALL_STMT            yes      TK_WITH                 
+parameters               129      TK_PARAMETERS            ~~~~             FUN_CALL_STMT            yes      TK_PARAMETERS           
+[                        129      TK_SQL                   ~~~~             INPUT_PARAMETERS         yes      TK_SQL                  
+~~~~                     129      ~~~~                     ~~~~             FUN_CALL_STMT            no       INPUT_PARAMETERS        
+b2                       129      TK_ID                    ~~~~             ID_LIST                  yes      TK_ID                   
+~~~~                     129      ~~~~                     ~~~~             INPUT_PARAMETERS         no       ID_LIST                 
+,                        129      TK_COMMA                 ~~~~             MORE_IDS                 yes      TK_COMMA                
+~~~~                     129      ~~~~                     ~~~~             ID_LIST                  no       MORE_IDS                
+c3                       129      TK_ID                    ~~~~             ID_LIST                  yes      TK_ID                   
+~~~~                     129      ~~~~                     ~~~~             MORE_IDS                 no       ID_LIST                 
+]                        129      TK_SQR                   ~~~~             INPUT_PARAMETERS         yes      TK_SQR                  
+;                        129      TK_SEM                   ~~~~             FUN_CALL_STMT            yes      TK_SEM                  
+~~~~                     129      ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     130      ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+[                        130      TK_SQL                   ~~~~             OUTPUT_PARAMETERS        yes      TK_SQL                  
+~~~~                     130      ~~~~                     ~~~~             FUN_CALL_STMT            no       OUTPUT_PARAMETERS       
+d4                       130      TK_ID                    ~~~~             ID_LIST                  yes      TK_ID                   
+~~~~                     130      ~~~~                     ~~~~             OUTPUT_PARAMETERS        no       ID_LIST                 
+]                        130      TK_SQR                   ~~~~             OUTPUT_PARAMETERS        yes      TK_SQR                  
+<---                     130      TK_ASSIGNOP              ~~~~             OUTPUT_PARAMETERS        yes      TK_ASSIGNOP             
+~~~~                     130      ~~~~                     ~~~~             STMT                     no       FUN_CALL_STMT           
+call                     130      TK_CALL                  ~~~~             FUN_CALL_STMT            yes      TK_CALL                 
+_processData             130      TK_FUNID                 ~~~~             FUN_CALL_STMT            yes      TK_FUNID                
+with                     130      TK_WITH                  ~~~~             FUN_CALL_STMT            yes      TK_WITH                 
+parameters               130      TK_PARAMETERS            ~~~~             FUN_CALL_STMT            yes      TK_PARAMETERS           
+[                        130      TK_SQL                   ~~~~             INPUT_PARAMETERS         yes      TK_SQL                  
+~~~~                     130      ~~~~                     ~~~~             FUN_CALL_STMT            no       INPUT_PARAMETERS        
+d4                       130      TK_ID                    ~~~~             ID_LIST                  yes      TK_ID                   
+~~~~                     130      ~~~~                     ~~~~             INPUT_PARAMETERS         no       ID_LIST                 
+]                        130      TK_SQR                   ~~~~             INPUT_PARAMETERS         yes      TK_SQR                  
+;                        130      TK_SEM                   ~~~~             FUN_CALL_STMT            yes      TK_SEM                  
+~~~~                     130      ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     132      ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+d2                       132      TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     132      ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+.                        132      TK_DOT                   ~~~~             ONE_EXPANSION            yes      TK_DOT                  
+~~~~                     132      ~~~~                     ~~~~             OPTION_SINGLE_CONSTRUCTED no       ONE_EXPANSION           
+tagvalue                 132      TK_FIELDID               ~~~~             ONE_EXPANSION            yes      TK_FIELDID              
+~~~~                     132      ~~~~                     ~~~~             SINGLE_OR_REC_ID         no       OPTION_SINGLE_CONSTRUCTED
+~~~~                     132      ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     132      TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+1                        132      TK_NUM                   1                VAR                      yes      TK_NUM                  
+~~~~                     132      ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     132      ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     132      ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     132      ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        132      TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     132      ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     133      ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+d2                       133      TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     133      ~~~~                     ~~~~             ASSIGNMENT_STMT          no       SINGLE_OR_REC_ID        
+.                        133      TK_DOT                   ~~~~             ONE_EXPANSION            yes      TK_DOT                  
+~~~~                     133      ~~~~                     ~~~~             OPTION_SINGLE_CONSTRUCTED no       ONE_EXPANSION           
+rollno                   133      TK_FIELDID               ~~~~             ONE_EXPANSION            yes      TK_FIELDID              
+~~~~                     133      ~~~~                     ~~~~             SINGLE_OR_REC_ID         no       OPTION_SINGLE_CONSTRUCTED
+~~~~                     133      ~~~~                     ~~~~             STMT                     no       ASSIGNMENT_STMT         
+<---                     133      TK_ASSIGNOP              ~~~~             ASSIGNMENT_STMT          yes      TK_ASSIGNOP             
+d4                       133      TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     133      ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+~~~~                     133      ~~~~                     ~~~~             FACTOR                   no       VAR                     
+~~~~                     133      ~~~~                     ~~~~             TERM                     no       FACTOR                  
+~~~~                     133      ~~~~                     ~~~~             ARITHMETIC_EXPRESSION    no       TERM                    
+~~~~                     133      ~~~~                     ~~~~             ASSIGNMENT_STMT          no       ARITHMETIC_EXPRESSION   
+;                        133      TK_SEM                   ~~~~             ASSIGNMENT_STMT          yes      TK_SEM                  
+~~~~                     133      ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     134      ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+write                    134      TK_WRITE                 ~~~~             IO_STMT                  yes      TK_WRITE                
+~~~~                     134      ~~~~                     ~~~~             STMT                     no       IO_STMT                 
+(                        134      TK_OP                    ~~~~             IO_STMT                  yes      TK_OP                   
+d2                       134      TK_ID                    ~~~~             SINGLE_OR_REC_ID         yes      TK_ID                   
+~~~~                     134      ~~~~                     ~~~~             VAR                      no       SINGLE_OR_REC_ID        
+.                        134      TK_DOT                   ~~~~             ONE_EXPANSION            yes      TK_DOT                  
+~~~~                     134      ~~~~                     ~~~~             OPTION_SINGLE_CONSTRUCTED no       ONE_EXPANSION           
+rollno                   134      TK_FIELDID               ~~~~             ONE_EXPANSION            yes      TK_FIELDID              
+~~~~                     134      ~~~~                     ~~~~             SINGLE_OR_REC_ID         no       OPTION_SINGLE_CONSTRUCTED
+~~~~                     134      ~~~~                     ~~~~             IO_STMT                  no       VAR                     
+)                        134      TK_CL                    ~~~~             IO_STMT                  yes      TK_CL                   
+;                        134      TK_SEM                   ~~~~             IO_STMT                  yes      TK_SEM                  
+~~~~                     134      ~~~~                     ~~~~             OTHER_STMTS              no       STMT                    
+~~~~                     136      ~~~~                     ~~~~             OTHER_STMTS              no       OTHER_STMTS             
+return                   137      TK_RETURN                ~~~~             RETURN_STMT              yes      TK_RETURN               
+~~~~                     137      ~~~~                     ~~~~             STMTS                    no       RETURN_STMT             
+;                        137      TK_SEM                   ~~~~             RETURN_STMT              yes      TK_SEM                  
+end                      138      TK_END                   ~~~~             MAIN_FUNCTION            yes      TK_END                  
